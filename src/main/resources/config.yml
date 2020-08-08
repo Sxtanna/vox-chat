@@ -1,0 +1,24 @@
+actions:
+  hover:
+    player_info:
+      - "&8~ &f&l%player_name%"
+      - ""
+      - "&6Rank&8:&f&o %vault_prefix%&r"
+      - "&9Store&8:&f&o https://your.server.store"
+  click:
+    message:
+      suggest: "/msg %player_name% "
+    open_store:
+      openurl: "https://your.server.store"
+
+formats:
+  default:
+    allows:
+      colors: false
+      format: false
+    format: "[click.message](&f%player_name%&r) &8»&r %message%&r"
+  donator:
+    allows:
+      colors: true
+      format: false
+    format: "[hover.player_info,click.open_store](%vault_prefix%&r) [click.message](&7%player_name%&r) &8»&r %message%&r"
