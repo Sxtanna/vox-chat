@@ -7,3 +7,9 @@ authors: ["Sxtanna"]
 
 api-version: "1.13"
 description: "Modern Minecraft Chat Management"
+
+commands:
+  voxchat:
+    description: "VoxChat Commands"
+    permission: "voxchat.command"
+    aliases: ["vc", "vchat"]
