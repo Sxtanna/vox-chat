@@ -18,6 +18,8 @@ repositories {
 }
 
 dependencies {
+    implementation "com.atlassian.commonmark:commonmark:0.15.2"
+    
     compileOnly "org.jetbrains:annotations:19.0.0"
     compileOnly "org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT"
 }
@@ -47,6 +49,8 @@ sourceSets {
 
 shadowJar {
     archiveClassifier.set("")
+    
+    relocate "com.atlassian.commonmark", "com.sxtanna.mc.chat.libs"
 }
 
 
