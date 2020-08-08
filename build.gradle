@@ -1,0 +1,51 @@
+plugins {
+    id 'idea'
+    id 'java-library'
+}
+
+
+group 'com.sxtanna.mc'
+version '0.1.0'
+
+
+repositories {
+    maven {
+        url = uri("https://papermc.io/repo/repository/maven-public/")
+    }
+    
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT"
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+idea {
+    module.downloadJavadoc = true
+    module.downloadSources = true
+}
+
+sourceSets {
+    test.compileClasspath += configurations.compileOnly
+    test.runtimeClasspath += configurations.compileOnly
+}
+
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [version: version]
+    }
+}
