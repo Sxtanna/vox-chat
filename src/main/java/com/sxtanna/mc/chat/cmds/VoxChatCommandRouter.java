@@ -2,6 +2,8 @@ package com.sxtanna.mc.chat.cmds;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.sxtanna.mc.chat.cmds.impl.CommandReload;
+import com.sxtanna.mc.chat.cmds.impl.CommandToggle;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,7 +26,8 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
 
 	@NotNull
 	@Unmodifiable
-	private static final List<VoxChatCommand> COMMANDS = ImmutableList.of();
+	private static final List<VoxChatCommand> COMMANDS = ImmutableList.of(new CommandReload(),
+																		  new CommandToggle());
 
 	@NotNull
 	@Unmodifiable
