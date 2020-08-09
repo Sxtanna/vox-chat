@@ -20,11 +20,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 
 public final class FormatManager implements State
 {
@@ -85,8 +85,7 @@ public final class FormatManager implements State
 			return Optional.empty();
 		}
 
-		final String         mark = ":" + UUID.randomUUID() + ":";
-		final Optional<Node> node = reader.read(plugin.getReplacer().apply(player, data.get().getFormatText()).replace("%message%", mark + message));
+		final Optional<Node> node = reader.read(plugin.getReplacer().apply(player, data.get().getFormatText()));
 		if (!node.isPresent())
 		{
 			return Optional.empty();
@@ -97,35 +96,37 @@ public final class FormatManager implements State
 
 
 		final BaseComponent[] renderComponents = render.getBuilder().create();
-		walkReplacing(player, mark, renderComponents);
+		walkReplacing(player, renderComponents, false);
 
-		final BaseComponent[] messageComponent = Comp.find(renderComponents, component -> component instanceof TextComponent && ((TextComponent) component).getText().contains(mark));
-
-		if (!data.get().allowsColors())
+		final BaseComponent[] searchComponents = Comp.find(renderComponents, component -> component instanceof TextComponent && ((TextComponent) component).getText().contains("%message%"));
+		if (searchComponents.length == 1)
 		{
-			Comp.walk(messageComponent, component ->
+			final TextComponent text = (TextComponent) searchComponents[0];
+			text.setText(text.getText().replace("%message%", ""));
+
+			final BaseComponent[] messageComponent = Comp.of(message);
+			if (!data.get().allowsColors())
 			{
-				component.setColor(null);
-			});
-		}
+				Comp.walk(messageComponent, component -> component.setColor(null));
+			}
 
-		if (!data.get().allowsFormat())
-		{
-			Comp.walk(messageComponent, component ->
+			if (!data.get().allowsFormat())
 			{
-				component.setBold(null);
-				component.setItalic(null);
-				component.setUnderlined(null);
-				component.setObfuscated(null);
-				component.setStrikethrough(null);
-			});
-		}
+				Comp.walk(messageComponent, component ->
+				{
+					component.setBold(null);
+					component.setItalic(null);
+					component.setUnderlined(null);
+					component.setObfuscated(null);
+					component.setStrikethrough(null);
+				});
+			}
 
-		Comp.walk(messageComponent, component ->
-		{
-			final TextComponent text = (TextComponent) component;
-			text.setText(text.getText().replace(mark, ""));
-		});
+			for (final BaseComponent component : messageComponent)
+			{
+				text.addExtra(component);
+			}
+		}
 
 		return Optional.of(renderComponents);
 	}
@@ -161,13 +162,13 @@ public final class FormatManager implements State
 	}
 
 
-	private void walkReplacing(@Nullable final OfflinePlayer player, @NotNull final String ignoreMarker, @NotNull final BaseComponent[] components)
+	private void walkReplacing(@Nullable final OfflinePlayer player, @NotNull final BaseComponent[] components, final boolean ignoreMainText)
 	{
 		Comp.walk(components, component -> {
 			final HoverEvent hoverEvent = component.getHoverEvent();
 			if (hoverEvent != null)
 			{
-				walkReplacingHoverEvent(player, ignoreMarker, hoverEvent);
+				walkReplacingHoverEvent(player, hoverEvent);
 			}
 
 			final ClickEvent clickEvent = component.getClickEvent();
@@ -183,14 +184,14 @@ public final class FormatManager implements State
 
 			final TextComponent text = (TextComponent) component;
 
-			if (!text.getText().contains(ignoreMarker))
+			if (!ignoreMainText)
 			{
 				text.setText(plugin.getReplacer().apply(player, text.getText()));
 			}
 		});
 	}
 
-	private void walkReplacingHoverEvent(@Nullable final OfflinePlayer player, @NotNull final String ignoreMarker, @NotNull final HoverEvent event)
+	private void walkReplacingHoverEvent(@Nullable final OfflinePlayer player, @NotNull final HoverEvent event)
 	{
 		event.getContents().replaceAll(content -> {
 			if (!(content instanceof Text))
@@ -209,7 +210,7 @@ public final class FormatManager implements State
 			else if (value instanceof BaseComponent[])
 			{
 				final BaseComponent[] compValue = (BaseComponent[]) value;
-				walkReplacing(player, ignoreMarker, compValue);
+				walkReplacing(player, compValue, false);
 
 				return new Text(compValue);
 			}
