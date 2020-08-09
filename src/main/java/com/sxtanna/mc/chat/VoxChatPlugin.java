@@ -1,5 +1,6 @@
 package com.sxtanna.mc.chat;
 
+import com.google.common.io.CharStreams;
 import com.sxtanna.mc.chat.cmds.VoxChatCommandRouter;
 import com.sxtanna.mc.chat.core.ActionManager;
 import com.sxtanna.mc.chat.core.FormatManager;
@@ -8,6 +9,9 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.io.Reader;
 
 public final class VoxChatPlugin extends JavaPlugin
 {
@@ -30,6 +34,19 @@ public final class VoxChatPlugin extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
+		try
+		{
+			final Reader banner = getTextResource("banner");
+			if (banner != null)
+			{
+				//noinspection UnstableApiUsage
+				getLogger().info("\n" + CharStreams.toString(banner));
+			}
+		}
+		catch (final IOException ignored)
+		{ }
+
+
 		actionManager.load();
 		formatManager.load();
 
