@@ -57,6 +57,7 @@ public final class VoxChatPlugin extends JavaPlugin
 		actionManager.load();
 		formatManager.load();
 
+		replacer.load();
 		listener.load();
 
 		getServer().getServicesManager().register(VoxChat.class, api, this, ServicePriority.Normal);
@@ -76,6 +77,7 @@ public final class VoxChatPlugin extends JavaPlugin
 	public void onDisable()
 	{
 		listener.kill();
+		replacer.kill();
 
 		actionManager.kill();
 		formatManager.kill();
