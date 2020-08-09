@@ -63,7 +63,7 @@ shadowJar {
 	
 	minimize()
 	
-	relocate "com.atlassian.commonmark", "com.sxtanna.mc.chat.libs"
+	relocate "org.commonmark", "com.sxtanna.mc.chat.libs"
 }
 
 
