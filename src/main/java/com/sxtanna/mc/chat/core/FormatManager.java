@@ -1,5 +1,6 @@
 package com.sxtanna.mc.chat.core;
 
+import com.google.common.collect.ImmutableSet;
 import com.sxtanna.mc.chat.VoxChatPlugin;
 import com.sxtanna.mc.chat.base.State;
 import com.sxtanna.mc.chat.core.data.FormatData;
@@ -12,10 +13,12 @@ import org.bukkit.entity.Player;
 import org.commonmark.node.Node;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public final class FormatManager implements State
 {
@@ -47,6 +50,13 @@ public final class FormatManager implements State
 		cached.clear();
 	}
 
+
+	@NotNull
+	@Unmodifiable
+	public Set<String> list()
+	{
+		return ImmutableSet.copyOf(cached.keySet());
+	}
 
 	@NotNull
 	public Optional<FormatData> find(@NotNull final String name)
