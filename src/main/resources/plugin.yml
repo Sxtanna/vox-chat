@@ -2,8 +2,8 @@ name: "VoxChat"
 main: "com.sxtanna.mc.chat.VoxChatPlugin"
 
 version: "@version@"
-website: "https://www.sxtanna.com"
-authors: ["Sxtanna"]
+website: "@website@"
+authors: ["@author@"]
 
 api-version: "1.13"
 description: "Modern Minecraft Chat Management"
