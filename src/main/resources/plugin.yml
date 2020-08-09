@@ -6,7 +6,7 @@ website: "@website@"
 authors: ["@author@"]
 
 api-version: "1.13"
-description: "Modern Minecraft Chat Management"
+description: "Modern Minecraft Chat Formatter"
 
 commands:
   voxchat:
