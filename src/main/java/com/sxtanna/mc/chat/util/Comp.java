@@ -80,7 +80,7 @@ public final class Comp
 			}
 
 			final TextComponent text = (TextComponent) next;
-			if ((text.getText() == null || text.getText().isEmpty()) && (text.getExtra() == null || text.getExtra().isEmpty()))
+			if ((text.getText() == null || text.getText().isEmpty()) && (text.getExtra() == null || text.getExtra().isEmpty()) && (text.getClickEvent() == null && text.getHoverEvent() == null))
 			{
 				iterator.remove();
 			}
