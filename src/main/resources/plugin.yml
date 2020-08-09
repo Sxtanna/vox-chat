@@ -13,3 +13,7 @@ commands:
     description: "VoxChat Commands"
     permission: "voxchat.command"
     aliases: ["vc", "vchat"]
+
+softdepend:
+  - "PlaceholderAPI"
+  - "MVdWPlaceholderAPI"
