@@ -35,6 +35,8 @@ public final class Placeholders implements State
 			try
 			{
 				hooked.add(me.clip.placeholderapi.PlaceholderAPI::setPlaceholders);
+
+				plugin.getLogger().info("Successfully registered replacer for PlaceholderAPI");
 			}
 			catch (final Throwable ex)
 			{
@@ -48,6 +50,8 @@ public final class Placeholders implements State
 			{
 				//noinspection NullableProblems
 				hooked.add(be.maximvdw.placeholderapi.PlaceholderAPI::replacePlaceholders);
+
+				plugin.getLogger().info("Successfully registered replacer for MVdWPlaceholderAPI");
 			}
 			catch (final Throwable ex)
 			{
