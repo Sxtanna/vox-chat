@@ -4,7 +4,6 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,32 +36,12 @@ public final class Comp
 		return TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', builder.toString()));
 	}
 
-	@NotNull
-	public static String to(@NotNull final BaseComponent[] json)
-	{
-		return ComponentSerializer.toString(json);
-	}
-
 
 	@NotNull
 	@Contract(value = " -> new", pure = true)
 	public static ComponentBuilder build()
 	{
-		return build("");
-	}
-
-	@NotNull
-	@Contract(value = "_ -> new", pure = true)
-	public static ComponentBuilder build(@NotNull final String text)
-	{
-		return new ComponentBuilder(text);
-	}
-
-	@NotNull
-	@Contract(value = "_ -> new", pure = true)
-	public static ComponentBuilder build(@NotNull final BaseComponent[] components)
-	{
-		return new ComponentBuilder(new TextComponent(components));
+		return new ComponentBuilder();
 	}
 
 
