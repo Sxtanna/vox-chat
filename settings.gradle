@@ -1,2 +1,3 @@
 rootProject.name = 'vox-chat'
+include 'premium'
 
