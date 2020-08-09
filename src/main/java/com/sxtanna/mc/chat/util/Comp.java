@@ -7,9 +7,11 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -85,6 +87,23 @@ public final class Comp
 		}
 
 		extra.forEach(other -> walk(other, visitor));
+	}
+
+
+	@NotNull
+	public static BaseComponent[] find(@NotNull final BaseComponent[] components, @NotNull final Predicate<BaseComponent> predicate)
+	{
+		final List<BaseComponent> matches = new ArrayList<>();
+
+		walk(components, component ->
+		{
+			if (predicate.test(component))
+			{
+				matches.add(component);
+			}
+		});
+
+		return matches.toArray(new BaseComponent[0]);
 	}
 
 
