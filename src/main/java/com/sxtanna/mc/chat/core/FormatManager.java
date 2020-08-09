@@ -8,17 +8,23 @@ import com.sxtanna.mc.chat.core.reader.VoxChatReader;
 import com.sxtanna.mc.chat.core.reader.VoxChatRender;
 import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.commonmark.node.Node;
-import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 public final class FormatManager implements State
 {
@@ -79,11 +85,8 @@ public final class FormatManager implements State
 			return Optional.empty();
 		}
 
-		// apply placeholders to this
-		@Language("Markdown")
-		final String text = data.get().getFormatText().replace("%message%", message);
-
-		final Optional<Node> node = reader.read(text);
+		final String         mark = ":" + UUID.randomUUID() + ":";
+		final Optional<Node> node = reader.read(plugin.getReplacer().apply(player, data.get().getFormatText()).replace("%message%", mark + message));
 		if (!node.isPresent())
 		{
 			return Optional.empty();
@@ -93,16 +96,23 @@ public final class FormatManager implements State
 		render.render(node.get());
 
 
-		final BaseComponent[] components = render.getBuilder().create();
+		final BaseComponent[] renderComponents = render.getBuilder().create();
+		walkReplacing(player, mark, renderComponents);
+
+		final BaseComponent[] messageComponent = Comp.find(renderComponents, component -> component instanceof TextComponent && ((TextComponent) component).getText().contains(mark));
 
 		if (!data.get().allowsColors())
 		{
-			Comp.walk(components, component -> component.setColor(null));
+			Comp.walk(messageComponent, component ->
+			{
+				component.setColor(null);
+			});
 		}
 
 		if (!data.get().allowsFormat())
 		{
-			Comp.walk(components, component -> {
+			Comp.walk(messageComponent, component ->
+			{
 				component.setBold(null);
 				component.setItalic(null);
 				component.setUnderlined(null);
@@ -111,7 +121,13 @@ public final class FormatManager implements State
 			});
 		}
 
-		return Optional.of(components);
+		Comp.walk(messageComponent, component ->
+		{
+			final TextComponent text = (TextComponent) component;
+			text.setText(text.getText().replace(mark, ""));
+		});
+
+		return Optional.of(renderComponents);
 	}
 
 
@@ -142,6 +158,64 @@ public final class FormatManager implements State
 
 			save(new FormatData(name, allowColors, allowFormat, formatText));
 		}
+	}
+
+
+	private void walkReplacing(@Nullable final OfflinePlayer player, @NotNull final String ignoreMarker, @NotNull final BaseComponent[] components)
+	{
+		Comp.walk(components, component -> {
+			final HoverEvent hoverEvent = component.getHoverEvent();
+			if (hoverEvent != null)
+			{
+				walkReplacingHoverEvent(player, ignoreMarker, hoverEvent);
+			}
+
+			final ClickEvent clickEvent = component.getClickEvent();
+			if (clickEvent != null)
+			{
+				component.setClickEvent(new ClickEvent(clickEvent.getAction(), plugin.getReplacer().apply(player, clickEvent.getValue())));
+			}
+
+			if (!(component instanceof TextComponent))
+			{
+				return;
+			}
+
+			final TextComponent text = (TextComponent) component;
+
+			if (!text.getText().contains(ignoreMarker))
+			{
+				text.setText(plugin.getReplacer().apply(player, text.getText()));
+			}
+		});
+	}
+
+	private void walkReplacingHoverEvent(@Nullable final OfflinePlayer player, @NotNull final String ignoreMarker, @NotNull final HoverEvent event)
+	{
+		event.getContents().replaceAll(content -> {
+			if (!(content instanceof Text))
+			{
+				return content;
+			}
+
+			Object value = ((Text) content).getValue();
+
+			if (value instanceof String)
+			{
+				final String textValue = (String) value;
+
+				return new Text(plugin.getReplacer().apply(player, textValue));
+			}
+			else if (value instanceof BaseComponent[])
+			{
+				final BaseComponent[] compValue = (BaseComponent[]) value;
+				walkReplacing(player, ignoreMarker, compValue);
+
+				return new Text(compValue);
+			}
+
+			return content;
+		});
 	}
 
 }
