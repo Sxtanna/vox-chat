@@ -116,14 +116,14 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 
 	private void cleanseEmpty()
 	{
-		while (!currentHasText())
+		while (!builder.getParts().isEmpty() && !currentHasText())
 		{
 			if (builder.getCurrentComponent().getExtra() != null && !builder.getCurrentComponent().getExtra().isEmpty())
 			{
 				break;
 			}
 
-			builder.removeComponent(builder.getCursor());
+			builder.resetCursor().removeComponent(builder.getCursor());
 		}
 	}
 
