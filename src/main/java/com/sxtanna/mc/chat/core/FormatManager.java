@@ -20,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -96,7 +95,8 @@ public final class FormatManager implements State
 
 
 		final BaseComponent[] renderComponents = render.getBuilder().create();
-		walkReplacing(player, renderComponents, false);
+		walkReplacing(player, renderComponents);
+
 
 		final BaseComponent[] searchComponents = Comp.find(renderComponents, component -> component instanceof TextComponent && ((TextComponent) component).getText().contains("%message%"));
 		if (searchComponents.length == 1)
@@ -162,7 +162,7 @@ public final class FormatManager implements State
 	}
 
 
-	private void walkReplacing(@Nullable final OfflinePlayer player, @NotNull final BaseComponent[] components, final boolean ignoreMainText)
+	private void walkReplacing(@Nullable final OfflinePlayer player, @NotNull final BaseComponent[] components)
 	{
 		Comp.walk(components, component -> {
 			final HoverEvent hoverEvent = component.getHoverEvent();
@@ -183,11 +183,7 @@ public final class FormatManager implements State
 			}
 
 			final TextComponent text = (TextComponent) component;
-
-			if (!ignoreMainText)
-			{
-				text.setText(plugin.getReplacer().apply(player, text.getText()));
-			}
+			text.setText(plugin.getReplacer().apply(player, text.getText()));
 		});
 	}
 
@@ -210,7 +206,7 @@ public final class FormatManager implements State
 			else if (value instanceof BaseComponent[])
 			{
 				final BaseComponent[] compValue = (BaseComponent[]) value;
-				walkReplacing(player, compValue, false);
+				walkReplacing(player, compValue);
 
 				return new Text(compValue);
 			}
