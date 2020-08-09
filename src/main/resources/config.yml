@@ -1,3 +1,29 @@
+#
+# Actions are path addressable, reusable component additions.
+#
+# =======================================
+#             Hover Template
+# hover:
+#   first_name:
+#     text: "Single Line"
+#   other_name:
+#     text:
+#       - "multiple"
+#       - "lines"
+# =======================================
+#
+# =======================================
+#             Click Template
+# click:
+#   first_name:
+#     show_cmd: "/suggest this command"
+#   other_name:
+#     open_url: "https://www.google.com"
+#   third_name:
+#     exec_cmd: "/execute this command"
+# =======================================
+
+
 actions:
   hover:
     player_info:
@@ -11,6 +37,21 @@ actions:
       show_cmd: "/msg %player_name% "
     open_store:
       open_url: "https://your.server.store"
+
+#
+# Formats can be assigned via a permission using their name
+#
+#
+# =======================================
+#             Format Template
+# formats:
+#   default: # permission would be voxchat.format.default
+#     allows:
+#       colors: false # whether the player can use color codes
+#       format: false # whether the player can use format codes
+#
+#     format: "%player_name% > %message%"
+# =======================================
 
 formats:
   default:
