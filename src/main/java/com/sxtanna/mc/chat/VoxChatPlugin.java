@@ -4,6 +4,7 @@ import com.google.common.io.CharStreams;
 import com.sxtanna.mc.chat.cmds.VoxChatCommandRouter;
 import com.sxtanna.mc.chat.core.ActionManager;
 import com.sxtanna.mc.chat.core.FormatManager;
+import com.sxtanna.mc.chat.core.events.ChatListener;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,6 +24,9 @@ public final class VoxChatPlugin extends JavaPlugin
 	private final ActionManager actionManager = new ActionManager(this);
 	@NotNull
 	private final FormatManager formatManager = new FormatManager(this);
+
+	@NotNull
+	private final ChatListener listener = new ChatListener(this);
 
 
 	@Override
@@ -50,6 +54,8 @@ public final class VoxChatPlugin extends JavaPlugin
 		actionManager.load();
 		formatManager.load();
 
+		listener.load();
+
 		getServer().getServicesManager().register(VoxChat.class, api, this, ServicePriority.Normal);
 		VoxChat.INSTANCE = api;
 
@@ -66,6 +72,8 @@ public final class VoxChatPlugin extends JavaPlugin
 	@Override
 	public void onDisable()
 	{
+		listener.kill();
+
 		actionManager.kill();
 		formatManager.kill();
 
