@@ -1,15 +1,16 @@
 actions:
   hover:
     player_info:
-      - "&8~ &f&l%player_name%"
-      - ""
-      - "&6Rank&8:&f&o %vault_prefix%&r"
-      - "&9Store&8:&f&o https://your.server.store"
+      text:
+        - "&8~ &f&l%player_name%"
+        - ""
+        - "&6Rank&8:&f&o %vault_prefix%&r"
+        - "&9Store&8:&f&o https://your.server.store"
   click:
     message:
-      suggest: "/msg %player_name% "
+      show_cmd: "/msg %player_name% "
     open_store:
-      openurl: "https://your.server.store"
+      open_url: "https://your.server.store"
 
 formats:
   default:
