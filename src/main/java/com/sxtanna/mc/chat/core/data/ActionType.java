@@ -1,4 +1,4 @@
-package com.sxtanna.mc.chat.base;
+package com.sxtanna.mc.chat.core.data;
 
 import org.jetbrains.annotations.NotNull;
 

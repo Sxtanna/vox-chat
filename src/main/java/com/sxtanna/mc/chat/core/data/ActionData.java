@@ -1,4 +1,4 @@
-package com.sxtanna.mc.chat.base;
+package com.sxtanna.mc.chat.core.data;
 
 import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.chat.ClickEvent;
