@@ -1,6 +1,7 @@
 package com.sxtanna.mc.chat;
 
 import com.sxtanna.mc.chat.core.ActionManager;
+import com.sxtanna.mc.chat.core.FormatManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -21,6 +22,12 @@ public final class VoxChat
 	public static ActionManager getActionManager()
 	{
 		return getInstance().getPlugin().getActionManager();
+	}
+
+	@NotNull
+	public static FormatManager getFormatManager()
+	{
+		return getInstance().getPlugin().getFormatManager();
 	}
 
 

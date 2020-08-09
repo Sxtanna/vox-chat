@@ -2,6 +2,7 @@ package com.sxtanna.mc.chat;
 
 import com.sxtanna.mc.chat.cmds.VoxChatCommandRouter;
 import com.sxtanna.mc.chat.core.ActionManager;
+import com.sxtanna.mc.chat.core.FormatManager;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,8 @@ public final class VoxChatPlugin extends JavaPlugin
 
 	@NotNull
 	private final ActionManager actionManager = new ActionManager(this);
+	@NotNull
+	private final FormatManager formatManager = new FormatManager(this);
 
 
 	@Override
@@ -28,6 +31,7 @@ public final class VoxChatPlugin extends JavaPlugin
 	public void onEnable()
 	{
 		actionManager.load();
+		formatManager.load();
 
 		getServer().getServicesManager().register(VoxChat.class, api, this, ServicePriority.Normal);
 		VoxChat.INSTANCE = api;
@@ -46,6 +50,7 @@ public final class VoxChatPlugin extends JavaPlugin
 	public void onDisable()
 	{
 		actionManager.kill();
+		formatManager.kill();
 
 		final PluginCommand command = getCommand("voxchat");
 		if (command != null)
@@ -64,6 +69,13 @@ public final class VoxChatPlugin extends JavaPlugin
 	public ActionManager getActionManager()
 	{
 		return actionManager;
+	}
+
+	@NotNull
+	@Contract(pure = true)
+	public FormatManager getFormatManager()
+	{
+		return formatManager;
 	}
 
 }
