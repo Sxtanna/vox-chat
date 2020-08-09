@@ -60,10 +60,10 @@ public abstract class ActionData
 
 	}
 
-	public static final class ChatActionClickExecCmd extends ActionData
+	public static final class ActionDataClickExecCmd extends ActionData
 	{
 
-		private ChatActionClickExecCmd(@NotNull final String text)
+		private ActionDataClickExecCmd(@NotNull final String text)
 		{
 			super(text);
 		}
@@ -76,10 +76,10 @@ public abstract class ActionData
 
 	}
 
-	public static final class ChatActionClickShowCmd extends ActionData
+	public static final class ActionDataClickShowCmd extends ActionData
 	{
 
-		private ChatActionClickShowCmd(@NotNull final String text)
+		private ActionDataClickShowCmd(@NotNull final String text)
 		{
 			super(text);
 		}
@@ -92,10 +92,10 @@ public abstract class ActionData
 
 	}
 
-	public static final class ChatActionClickOpenUrl extends ActionData
+	public static final class ActionDataClickOpenUrl extends ActionData
 	{
 
-		private ChatActionClickOpenUrl(@NotNull final String text)
+		private ActionDataClickOpenUrl(@NotNull final String text)
 		{
 			super(text);
 		}
