@@ -2,6 +2,7 @@ package com.sxtanna.mc.chat;
 
 import com.sxtanna.mc.chat.core.ActionManager;
 import com.sxtanna.mc.chat.core.FormatManager;
+import com.sxtanna.mc.chat.hook.Placeholders;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -28,6 +29,12 @@ public final class VoxChat
 	public static FormatManager getFormatManager()
 	{
 		return getInstance().getPlugin().getFormatManager();
+	}
+
+	@NotNull
+	public static Placeholders getReplacer()
+	{
+		return getInstance().getPlugin().getReplacer();
 	}
 
 
