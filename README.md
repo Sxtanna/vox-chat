@@ -8,7 +8,6 @@
     <br />
     <strong>Modern Minecraft Chat Formatter</strong>
     <br />
-    
     <a href="https://github.com/Sxtanna/vox-chat/issues">Report a Bug</a>
     ·
     <a href="https://github.com/Sxtanna/vox-chat/pulls">Send a Pull Request</a>
