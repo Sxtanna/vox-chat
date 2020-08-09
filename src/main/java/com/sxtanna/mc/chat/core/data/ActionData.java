@@ -7,6 +7,7 @@ import net.md_5.bungee.api.chat.hover.content.Text;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public abstract class ActionData
@@ -41,6 +42,34 @@ public abstract class ActionData
 		return Optional.empty();
 	}
 
+
+	@Override
+	public final boolean equals(final Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!getClass().isInstance(o))
+		{
+			return false;
+		}
+
+		final ActionData that = (ActionData) o;
+		return getText().equals(that.getText());
+	}
+
+	@Override
+	public final int hashCode()
+	{
+		return Objects.hash(getText());
+	}
+
+	@Override
+	public String toString()
+	{
+		return String.format("%s['%s']", getClass().getSimpleName(), text);
+	}
 
 	public static final class ActionDataHover extends ActionData
 	{
