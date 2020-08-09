@@ -61,6 +61,8 @@ sourceSets {
 shadowJar {
 	archiveClassifier.set("")
 	
+	minimize()
+	
 	relocate "com.atlassian.commonmark", "com.sxtanna.mc.chat.libs"
 }
 
