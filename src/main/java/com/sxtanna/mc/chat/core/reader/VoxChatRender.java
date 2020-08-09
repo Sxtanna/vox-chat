@@ -84,8 +84,10 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 	{
 		visitChildren(link);
 
+		cleanseEmpty();
+
 		// registered actions
-		for (final String dest : link.getDestination().split("[,|:/]"))
+		for (final String dest : link.getDestination().replace(" ", "").split("[,|:/]"))
 		{
 			// [action_type.action_name]
 			final String[] path = dest.split("\\.");
@@ -110,6 +112,19 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 	{
 		final BaseComponent current = builder.getCurrentComponent();
 		return current instanceof TextComponent && !((TextComponent) current).getText().isEmpty();
+	}
+
+	private void cleanseEmpty()
+	{
+		while (!currentHasText())
+		{
+			if (builder.getCurrentComponent().getExtra() != null && !builder.getCurrentComponent().getExtra().isEmpty())
+			{
+				break;
+			}
+
+			builder.removeComponent(builder.getCursor());
+		}
 	}
 
 }
