@@ -110,9 +110,31 @@ public abstract class ActionData
 
 
 	@NotNull
+	@Contract("_ -> new")
 	public static ActionData hover(@NotNull final String text)
 	{
 		return new ActionDataHover(text);
+	}
+
+	@NotNull
+	@Contract("_ -> new")
+	public static ActionData execCmd(@NotNull final String text)
+	{
+		return new ActionDataClickExecCmd(text);
+	}
+
+	@NotNull
+	@Contract("_ -> new")
+	public static ActionData showCmd(@NotNull final String text)
+	{
+		return new ActionDataClickShowCmd(text);
+	}
+
+	@NotNull
+	@Contract("_ -> new")
+	public static ActionData openUrl(@NotNull final String text)
+	{
+		return new ActionDataClickOpenUrl(text);
 	}
 
 }
