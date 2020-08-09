@@ -84,5 +84,5 @@ formats:
     allows:
       colors: true
       format: false
-    format: "[%vault_prefix%&r](hover.player_info, click.open_store) [&7%player_name%&r](click.message) &8»&r %message%&r"
+    format: "[%vault_prefix%&r](hover.player_info,click.open_store) [&7%player_name%&r](click.message) &8»&r %message%&r"
 ```
