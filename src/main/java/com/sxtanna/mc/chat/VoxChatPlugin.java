@@ -5,6 +5,7 @@ import com.sxtanna.mc.chat.cmds.VoxChatCommandRouter;
 import com.sxtanna.mc.chat.core.ActionManager;
 import com.sxtanna.mc.chat.core.FormatManager;
 import com.sxtanna.mc.chat.core.events.ChatListener;
+import com.sxtanna.mc.chat.hook.Placeholders;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,8 @@ public final class VoxChatPlugin extends JavaPlugin
 
 	@NotNull
 	private final ChatListener listener = new ChatListener(this);
+	@NotNull
+	private final Placeholders replacer = new Placeholders(this);
 
 
 	@Override
@@ -101,6 +104,14 @@ public final class VoxChatPlugin extends JavaPlugin
 	public FormatManager getFormatManager()
 	{
 		return formatManager;
+	}
+
+
+	@NotNull
+	@Contract(pure = true)
+	public Placeholders getReplacer()
+	{
+		return replacer;
 	}
 
 }
