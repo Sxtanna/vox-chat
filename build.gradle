@@ -1,7 +1,7 @@
 plugins {
-    id 'idea'
-    id 'java-library'
-    id 'com.github.johnrengelman.shadow' version '6.0.0'
+	id 'idea'
+	id 'java-library'
+	id 'com.github.johnrengelman.shadow' version '6.0.0'
 }
 
 
@@ -10,57 +10,66 @@ version '0.1.0'
 
 
 repositories {
-    maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
-    }
-    
-    mavenCentral()
+	maven {
+		url = uri("https://papermc.io/repo/repository/maven-public/")
+	}
+	maven {
+		url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/")
+	}
+	maven {
+		url = uri("http://repo.mvdw-software.be/content/groups/public/")
+	}
+	
+	mavenCentral()
 }
 
 dependencies {
-    implementation "com.atlassian.commonmark:commonmark:0.15.2"
+	implementation "com.atlassian.commonmark:commonmark:0.15.2"
+	
+	compileOnly "org.jetbrains:annotations:19.0.0"
+	compileOnly "org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT"
     
-    compileOnly "org.jetbrains:annotations:19.0.0"
-    compileOnly "org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT"
+    compileOnly "me.clip:placeholderapi:2.10.9"
+	compileOnly "be.maximvdw:MVdWPlaceholderAPI:3.0.1-SNAPSHOT"
 }
 
 
 tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-    
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+	options.encoding = 'UTF-8'
+	
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 java {
-    withJavadocJar()
-    withSourcesJar()
+	withJavadocJar()
+	withSourcesJar()
 }
 
 idea {
-    module.downloadJavadoc = true
-    module.downloadSources = true
+	module.downloadJavadoc = true
+	module.downloadSources = true
 }
 
 sourceSets {
-    test.compileClasspath += configurations.compileOnly
-    test.runtimeClasspath += configurations.compileOnly
+	test.compileClasspath += configurations.compileOnly
+	test.runtimeClasspath += configurations.compileOnly
 }
 
 shadowJar {
-    archiveClassifier.set("")
-    
-    relocate "com.atlassian.commonmark", "com.sxtanna.mc.chat.libs"
+	archiveClassifier.set("")
+	
+	relocate "com.atlassian.commonmark", "com.sxtanna.mc.chat.libs"
 }
 
 
 processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [version: version, website: "https://www.sxtanna.com", author: "Sxtanna"]
-    }
+	from(sourceSets.main.resources.srcDirs) {
+		filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [version: version, website: "https://www.sxtanna.com", author: "Sxtanna"]
+	}
 }
 
 task copyToServerDir(type: Copy) {
-    from shadowJar
-    into "~\\..\\..\\server\\plugins"
+	from shadowJar
+	into "~\\..\\..\\server\\plugins"
 }
