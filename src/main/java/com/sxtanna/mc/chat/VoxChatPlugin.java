@@ -116,4 +116,11 @@ public final class VoxChatPlugin extends JavaPlugin
 		return replacer;
 	}
 
+	@NotNull
+	@Contract(pure = true)
+	public ChatListener getListener()
+	{
+		return listener;
+	}
+
 }
