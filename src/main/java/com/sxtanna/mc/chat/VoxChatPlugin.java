@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Optional;
 
 public final class VoxChatPlugin extends JavaPlugin
 {
@@ -121,6 +122,27 @@ public final class VoxChatPlugin extends JavaPlugin
 	public ChatListener getListener()
 	{
 		return listener;
+	}
+
+	@NotNull
+	public Optional<Throwable> reloadPlugin()
+	{
+		try
+		{
+			actionManager.kill();
+			formatManager.kill();
+
+			reloadConfig();
+
+			actionManager.load();
+			formatManager.load();
+		}
+		catch (final Throwable ex)
+		{
+			return Optional.of(ex);
+		}
+
+		return Optional.empty();
 	}
 
 }
