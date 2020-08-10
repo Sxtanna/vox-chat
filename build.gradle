@@ -78,9 +78,9 @@ allprojects {
 			filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [version: version, website: "https://www.sxtanna.com", author: "Sxtanna"]
 		}
 	}
-	
-	task copyToServerDir(type: Copy) {
-		from shadowJar
-		into "${rootProject.rootDir.parent}\\server\\plugins"
-	}
+}
+
+task copyToServerDir(type: Copy) {
+	from shadowJar
+	into "${rootProject.rootDir.parent}\\server\\plugins"
 }
