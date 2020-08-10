@@ -8,12 +8,45 @@ authors: ["@author@"]
 api-version: "1.13"
 description: "Modern Minecraft Chat Formatter"
 
+softdepend:
+  - "PlaceholderAPI"
+  - "MVdWPlaceholderAPI"
+
 commands:
   voxchat:
     description: "VoxChat Commands"
     permission: "voxchat.command"
     aliases: ["vc", "vchat"]
 
-softdepend:
-  - "PlaceholderAPI"
-  - "MVdWPlaceholderAPI"
+permissions:
+  voxchat.command.*:
+    description: "Allows access to run VoxChat commands"
+    children:
+      voxchat.command.help: true
+      voxchat.command.format: true
+      voxchat.command.reload: true
+      voxchat.command.toggle: true
+  voxchat.command.help:
+    default: "op"
+    description: "Allows access to view command usages"
+    children:
+      voxchat.command: true
+      voxchat.command.true: true
+  voxchat.command.format:
+    default: "op"
+    description: "Allows access to preview formats"
+    children:
+      voxchat.command: true
+      voxchat.command.true: true
+  voxchat.command.reload:
+    default: "op"
+    description: "Allows access to reload the plugin"
+    children:
+      voxchat.command: true
+      voxchat.command.true: true
+  voxchat.command.toggle:
+    default: "op"
+    description: "Allows access to toggle formatting chat"
+    children:
+      voxchat.command: true
+      voxchat.command.true: true
