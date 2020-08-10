@@ -3,9 +3,14 @@ package com.sxtanna.mc.chat;
 import com.sxtanna.mc.chat.core.ActionManager;
 import com.sxtanna.mc.chat.core.FormatManager;
 import com.sxtanna.mc.chat.hook.Placeholders;
+import net.md_5.bungee.api.chat.BaseComponent;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.Objects;
+import java.util.Optional;
 
 public final class VoxChat
 {
@@ -16,6 +21,19 @@ public final class VoxChat
 	private static VoxChat getInstance()
 	{
 		return Objects.requireNonNull(INSTANCE, "VoxChat has not be enabled yet!");
+	}
+
+
+	public static boolean send(@NotNull final String format, @NotNull final Player player, @NotNull final String message, @NotNull final Collection<? extends CommandSender> recipients)
+	{
+		final Optional<BaseComponent[]> components = getFormatManager().prepare(format, player, message);
+		if (!components.isPresent())
+		{
+			return false;
+		}
+
+		recipients.forEach(other -> other.spigot().sendMessage(components.get()));
+		return true;
 	}
 
 

@@ -1,8 +1,8 @@
 package com.sxtanna.mc.chat.core.events;
 
+import com.sxtanna.mc.chat.VoxChat;
 import com.sxtanna.mc.chat.VoxChatPlugin;
 import com.sxtanna.mc.chat.base.State;
-import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -73,15 +73,11 @@ public final class ChatListener implements State, Listener
 			return;
 		}
 
-		final Optional<BaseComponent[]> components = plugin.getFormatManager().prepare(voxChatEvent.getFormat(), voxChatEvent.getPlayer(), voxChatEvent.getMessage());
-		if (!components.isPresent())
+		final boolean messageWasSent = VoxChat.send(voxChatEvent.getFormat(), voxChatEvent.getPlayer(), voxChatEvent.getMessage(), event.getRecipients());
+		if (messageWasSent)
 		{
-			return;
+			event.setCancelled(true);
 		}
-
-		event.setCancelled(true);
-
-		event.getRecipients().forEach(other -> other.spigot().sendMessage(components.get()));
 	}
 
 }
