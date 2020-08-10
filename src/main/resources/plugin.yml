@@ -31,22 +31,21 @@ permissions:
     description: "Allows access to view command usages"
     children:
       voxchat.command: true
-      voxchat.command.true: true
   voxchat.command.format:
     default: "op"
     description: "Allows access to preview formats"
     children:
       voxchat.command: true
-      voxchat.command.true: true
+      voxchat.command.help: true
   voxchat.command.reload:
     default: "op"
     description: "Allows access to reload the plugin"
     children:
       voxchat.command: true
-      voxchat.command.true: true
+      voxchat.command.help: true
   voxchat.command.toggle:
     default: "op"
     description: "Allows access to toggle formatting chat"
     children:
       voxchat.command: true
-      voxchat.command.true: true
+      voxchat.command.help: true
