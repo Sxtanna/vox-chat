@@ -9,6 +9,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -19,6 +20,7 @@ public final class ChatListener implements State, Listener
 	@NotNull
 	private final VoxChatPlugin plugin;
 
+	private boolean loaded;
 
 	public ChatListener(@NotNull final VoxChatPlugin plugin)
 	{
@@ -30,12 +32,23 @@ public final class ChatListener implements State, Listener
 	public void load()
 	{
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
+
+		loaded = true;
 	}
 
 	@Override
 	public void kill()
 	{
 		HandlerList.unregisterAll(this);
+
+		loaded = false;
+	}
+
+
+	@Contract(pure = true)
+	public boolean isLoaded()
+	{
+		return loaded;
 	}
 
 
