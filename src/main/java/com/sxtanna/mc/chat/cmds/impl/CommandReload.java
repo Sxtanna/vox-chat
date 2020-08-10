@@ -29,11 +29,9 @@ public final class CommandReload extends VoxChatCommand
 		final Optional<Throwable> result = getPlugin().reloadPlugin();
 		if (!result.isPresent())
 		{
-
 			sender.spigot().sendMessage(prefix().append(" successfully reloaded.")
 												.color(GREEN)
 												.create());
-
 			return;
 		}
 

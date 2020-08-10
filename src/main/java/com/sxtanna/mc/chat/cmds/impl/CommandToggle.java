@@ -44,13 +44,11 @@ public final class CommandToggle extends VoxChatCommand
 
 		if (currentState == desiredState)
 		{
-
 			sender.spigot().sendMessage(prefix().append(" is already ")
 												.color(GRAY)
 												.append(currentState ? "enabled" : "disabled")
 												.color(currentState ? GREEN : RED)
 												.create());
-
 			return;
 		}
 
