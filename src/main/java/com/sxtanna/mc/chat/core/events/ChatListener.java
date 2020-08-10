@@ -58,7 +58,7 @@ public final class ChatListener implements State, Listener
 		final Player player  = event.getPlayer();
 		final String message = event.getMessage();
 
-		final Optional<String> formatName = plugin.getFormatManager().list().stream().filter(name -> player.hasPermission("voxchat.format." + name)).findFirst();
+		final Optional<String> formatName = VoxChat.find(player);
 		if (!formatName.isPresent())
 		{
 			return;
