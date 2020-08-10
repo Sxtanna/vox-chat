@@ -2,6 +2,7 @@ package com.sxtanna.mc.chat.cmds;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.sxtanna.mc.chat.VoxChatPlugin;
 import com.sxtanna.mc.chat.cmds.impl.CommandReload;
 import com.sxtanna.mc.chat.cmds.impl.CommandToggle;
 import net.md_5.bungee.api.ChatColor;
@@ -48,10 +49,12 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
 	private final Map<String, VoxChatCommand> lookup;
 
 
-	public VoxChatCommandRouter(@NotNull final Plugin plugin)
+	public VoxChatCommandRouter(@NotNull final VoxChatPlugin plugin)
 	{
 		this.plugin = plugin;
 		this.lookup = generateLookupMap();
+
+		COMMANDS.forEach(command -> command.setPlugin(plugin));
 	}
 
 
