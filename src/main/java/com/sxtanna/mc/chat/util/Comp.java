@@ -38,6 +38,18 @@ public final class Comp
 		return TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', builder.toString()));
 	}
 
+	@NotNull
+	public static TextComponent ofText(@NotNull final String text)
+	{
+		return ofBase(of(text));
+	}
+
+	@NotNull
+	public static TextComponent ofBase(@NotNull final BaseComponent[] components)
+	{
+		return new TextComponent(components);
+	}
+
 
 	@NotNull
 	@Contract(value = " -> new", pure = true)
