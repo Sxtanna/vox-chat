@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Optional;
 
+import static com.sxtanna.mc.chat.util.Comp.of;
+
 public abstract class ActionData
 {
 
@@ -84,7 +86,7 @@ public abstract class ActionData
 		@Override
 		public Optional<HoverEvent> getHoverEvent()
 		{
-			return Optional.of(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(Comp.of(getText()))));
+			return Optional.of(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(of(getText()))));
 		}
 
 	}

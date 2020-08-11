@@ -20,13 +20,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+import static com.sxtanna.mc.chat.util.Comp.build;
+import static com.sxtanna.mc.chat.util.Comp.clean;
 import static com.sxtanna.mc.chat.util.Comp.ofText;
 
 public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 {
 
 	@NotNull
-	private final ComponentBuilder builder = Comp.build();
+	private final ComponentBuilder builder = build();
 
 	private boolean ital;
 	private boolean bold;
@@ -34,7 +36,7 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 	@NotNull
 	public ComponentBuilder getBuilder()
 	{
-		return Comp.clean(builder);
+		return clean(builder);
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package com.sxtanna.mc.chat.cmds;
 
 import com.google.common.collect.ImmutableList;
 import com.sxtanna.mc.chat.VoxChatPlugin;
-import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -13,6 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.List;
 
+import static com.sxtanna.mc.chat.util.Comp.build;
 import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
 import static net.md_5.bungee.api.ChatColor.WHITE;
 import static net.md_5.bungee.api.ChatColor.YELLOW;
@@ -77,33 +77,31 @@ public abstract class VoxChatCommand
 	@NotNull
 	protected final ComponentBuilder prefix()
 	{
-		return Comp.build()
-				   .append("::")
-				   .color(WHITE)
-				   .bold(true)
+		return build().append("::")
+					  .color(WHITE)
+					  .bold(true)
 
-				   .append(" VoxChat ")
-				   .color(DARK_GRAY)
-				   .bold(true)
+					  .append(" VoxChat ")
+					  .color(DARK_GRAY)
+					  .bold(true)
 
-				   .event(new ClickEvent(ClickEvent.Action.OPEN_URL, getPlugin().getDescription().getWebsite()))
-				   .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(Comp.build()
-																				   .append("v")
-																				   .color(DARK_GRAY)
-																				   .bold(false)
-																				   .append(getPlugin().getDescription().getVersion())
-																				   .color(WHITE)
-																				   .append("\n")
-																				   .append("  - Sxtanna")
-																				   .color(YELLOW)
-																				   .create())))
+					  .event(new ClickEvent(ClickEvent.Action.OPEN_URL, getPlugin().getDescription().getWebsite()))
+					  .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(build().append("v")
+																						 .color(DARK_GRAY)
+																						 .bold(false)
+																						 .append(getPlugin().getDescription().getVersion())
+																						 .color(WHITE)
+																						 .append("\n")
+																						 .append("  - Sxtanna")
+																						 .color(YELLOW)
+																						 .create())))
 
-				   .append("::")
-				   .color(WHITE)
-				   .bold(true)
+					  .append("::")
+					  .color(WHITE)
+					  .bold(true)
 
-				   .append("")
-				   .retain(ComponentBuilder.FormatRetention.NONE);
+					  .append("")
+					  .retain(ComponentBuilder.FormatRetention.NONE);
 	}
 
 }

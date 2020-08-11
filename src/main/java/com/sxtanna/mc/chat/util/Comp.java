@@ -103,7 +103,7 @@ public final class Comp
 
 
 	@NotNull
-	public static BaseComponent[] find(@NotNull final BaseComponent[] components, @NotNull final Predicate<BaseComponent> predicate)
+	public static BaseComponent[] filter(@NotNull final BaseComponent[] components, @NotNull final Predicate<BaseComponent> predicate)
 	{
 		final List<BaseComponent> matches = new ArrayList<>();
 

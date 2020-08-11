@@ -6,7 +6,6 @@ import com.sxtanna.mc.chat.base.State;
 import com.sxtanna.mc.chat.core.data.FormatData;
 import com.sxtanna.mc.chat.core.reader.VoxChatReader;
 import com.sxtanna.mc.chat.core.reader.VoxChatRender;
-import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -24,6 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+
+import static com.sxtanna.mc.chat.util.Comp.filter;
+import static com.sxtanna.mc.chat.util.Comp.of;
+import static com.sxtanna.mc.chat.util.Comp.walk;
 
 public final class FormatManager implements State
 {
@@ -98,21 +101,21 @@ public final class FormatManager implements State
 		walkReplacing(player, renderComponents);
 
 
-		final BaseComponent[] searchComponents = Comp.find(renderComponents, component -> component instanceof TextComponent && ((TextComponent) component).getText().contains("%message%"));
+		final BaseComponent[] searchComponents = filter(renderComponents, component -> component instanceof TextComponent && ((TextComponent) component).getText().contains("%message%"));
 		if (searchComponents.length == 1)
 		{
 			final TextComponent text = (TextComponent) searchComponents[0];
 			text.setText(text.getText().replace("%message%", ""));
 
-			final BaseComponent[] messageComponent = Comp.of(message);
+			final BaseComponent[] messageComponent = of(message);
 			if (!data.get().allowsColors())
 			{
-				Comp.walk(messageComponent, component -> component.setColor(null));
+				walk(messageComponent, component -> component.setColor(null));
 			}
 
 			if (!data.get().allowsFormat())
 			{
-				Comp.walk(messageComponent, component ->
+				walk(messageComponent, component ->
 				{
 					component.setBold(null);
 					component.setItalic(null);
@@ -164,7 +167,7 @@ public final class FormatManager implements State
 
 	private void walkReplacing(@Nullable final OfflinePlayer player, @NotNull final BaseComponent[] components)
 	{
-		Comp.walk(components, component -> {
+		walk(components, component -> {
 			final HoverEvent hoverEvent = component.getHoverEvent();
 			if (hoverEvent != null)
 			{
