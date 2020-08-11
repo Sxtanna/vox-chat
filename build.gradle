@@ -71,7 +71,15 @@ shadowJar {
 
 processResources {
 	from(sourceSets.main.resources.srcDirs) {
-		filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [version: version, website: "https://www.sxtanna.com", author: "Sxtanna"]
+		filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+				pluginName: project.properties["pluginName"],
+				pluginMain: project.properties["pluginMain"],
+				
+				pluginVersion: project.properties["pluginVersion"],
+				pluginWebsite: project.properties["pluginWebsite"],
+				
+				pluginAuthors: project.properties["pluginAuthors"],
+		]
 	}
 }
 
