@@ -49,17 +49,23 @@ public enum ActionType
 						return Optional.empty();
 					}
 
+					final ActionData data;
 					switch (k.toLowerCase())
 					{
 						case "exec_cmd":
-							return Optional.of(ActionData.execCmd(v));
+							data = ActionData.clickExecCmd(v);
+							break;
 						case "show_cmd":
-							return Optional.of(ActionData.showCmd(v));
+							data = ActionData.clickShowCmd(v);
+							break;
 						case "open_url":
-							return Optional.of(ActionData.openUrl(v));
+							data = ActionData.clickOpenUrl(v);
+							break;
 						default:
 							return Optional.empty();
 					}
+
+					return Optional.of(data);
 				}
 			};
 
