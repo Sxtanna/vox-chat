@@ -60,7 +60,7 @@ public final class CommandFormat extends VoxChatCommand
 		final boolean messageWasSent = VoxChat.send(format,
 													player,
 
-													"Hi, this is &la&r &atest&f message! :D",
+													"Hi, this is&l a&a test&f message! :D",
 
 													Collections.singleton(sender));
 		if (!messageWasSent)
