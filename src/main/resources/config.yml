@@ -5,8 +5,10 @@
 #             Hover Template
 # hover:
 #   first_name:
+#     # A hover with a single line
 #     text: "Single Line"
 #   other_name:
+#     # A hover with multiple lines
 #     text:
 #       - "multiple"
 #       - "lines"
@@ -16,10 +18,13 @@
 #             Click Template
 # click:
 #   first_name:
+#     # Suggest a command to the player
 #     show_cmd: "/suggest this command"
 #   other_name:
+#      # Attempt to open a link in the player's browser
 #     open_url: "https://www.google.com"
 #   third_name:
+#     # Execute a command as the player
 #     exec_cmd: "/execute this command"
 # =======================================
 
@@ -45,11 +50,14 @@ actions:
 # =======================================
 #             Format Template
 # formats:
-#   default: # permission would be voxchat.format.default
+#   # Permission would be voxchat.format.default
+#   default:
 #     allows:
-#       colors: false # whether the player can use color codes
-#       format: false # whether the player can use format codes
-#
+#       # Whether the player can use color codes
+#       colors: true # default false
+#       # Whether the player can use format codes
+#       format: true # default false
+#     # The actual format for messages sent by players
 #     format: "%player_name% > %message%"
 # =======================================
 
