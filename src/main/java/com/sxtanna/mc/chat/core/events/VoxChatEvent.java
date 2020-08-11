@@ -7,10 +7,14 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public final class VoxChatEvent extends Event implements Cancellable
 {
 
+	@NotNull
 	private static final HandlerList HANDLERS = new HandlerList();
+
 
 	@NotNull
 	private final Player player;
@@ -82,6 +86,38 @@ public final class VoxChatEvent extends Event implements Cancellable
 	public HandlerList getHandlers()
 	{
 		return HANDLERS;
+	}
+
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!(o instanceof VoxChatEvent))
+		{
+			return false;
+		}
+
+		final VoxChatEvent that = (VoxChatEvent) o;
+		return isCancelled() == that.isCancelled() &&
+			   getPlayer().equals(that.getPlayer()) &&
+			   getFormat().equals(that.getFormat()) &&
+			   getMessage().equals(that.getMessage());
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(getPlayer(), getFormat(), getMessage(), isCancelled());
+	}
+
+	@Override
+	public String toString()
+	{
+		return String.format("VoxChatEvent[player=%s, format='%s', message='%s', cancelled=%s, handlers=%s]", player, format, message, cancelled, getHandlers());
 	}
 
 

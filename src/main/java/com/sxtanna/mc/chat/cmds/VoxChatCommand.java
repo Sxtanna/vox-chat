@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.sxtanna.mc.chat.util.Comp.build;
 import static net.md_5.bungee.api.ChatColor.DARK_GRAY;
@@ -102,6 +103,34 @@ public abstract class VoxChatCommand
 
 					  .append("")
 					  .retain(ComponentBuilder.FormatRetention.NONE);
+	}
+
+
+	@Override
+	public final boolean equals(final Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!(o instanceof VoxChatCommand))
+		{
+			return false;
+		}
+		final VoxChatCommand that = (VoxChatCommand) o;
+		return labels.equals(that.labels);
+	}
+
+	@Override
+	public final int hashCode()
+	{
+		return Objects.hash(labels);
+	}
+
+	@Override
+	public final String toString()
+	{
+		return String.format("VoxChatCommand[labels=%s]", labels);
 	}
 
 }
