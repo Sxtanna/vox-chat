@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+import static com.sxtanna.mc.chat.util.Comp.ofText;
+
 public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 {
 
@@ -67,7 +69,9 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 	@Override
 	public void visit(final Text text)
 	{
-		builder.append(Comp.of(text.getLiteral()), currentHasText() ? ComponentBuilder.FormatRetention.NONE : ComponentBuilder.FormatRetention.FORMATTING);
+		builder.append(ofText(text.getLiteral()), currentHasText() ?
+												  ComponentBuilder.FormatRetention.NONE :
+												  ComponentBuilder.FormatRetention.FORMATTING);
 
 		if (ital)
 		{
