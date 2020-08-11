@@ -1,12 +1,10 @@
 package com.sxtanna.mc.chat.cmds.impl;
 
 import com.sxtanna.mc.chat.cmds.VoxChatCommand;
-import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
@@ -15,6 +13,9 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.sxtanna.mc.chat.util.Comp.build;
+import static com.sxtanna.mc.chat.util.Comp.ofBase;
 
 public final class CommandHelp extends VoxChatCommand
 {
@@ -35,17 +36,15 @@ public final class CommandHelp extends VoxChatCommand
 
 		if (sender.hasPermission("voxchat.command.format"))
 		{
-			final ComponentBuilder desc = Comp.build()
-											  .append("  ")
-											  .append(new TextComponent(Comp.build()
-																			.append("/voxchat ")
-																			.color(ChatColor.GRAY)
-																			.append("format ")
-																			.color(ChatColor.GREEN)
-																			.append("[format name]")
-																			.color(ChatColor.BLUE)
-																			.create()))
-											  .event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/voxchat format "));
+			final ComponentBuilder desc = build().append("  ")
+												 .append(ofBase(build().append("/voxchat ")
+																	   .color(ChatColor.GRAY)
+																	   .append("format ")
+																	   .color(ChatColor.GREEN)
+																	   .append("[format name]")
+																	   .color(ChatColor.BLUE)
+																	   .create()))
+												 .event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/voxchat format "));
 
 			getCommandDescription("voxchat.command.format").ifPresent(s -> desc.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(s))));
 
@@ -55,15 +54,13 @@ public final class CommandHelp extends VoxChatCommand
 
 		if (sender.hasPermission("voxchat.command.reload"))
 		{
-			final ComponentBuilder desc = Comp.build()
-											  .append("  ")
-											  .append(new TextComponent(Comp.build()
-																			.append("/voxchat ")
-																			.color(ChatColor.GRAY)
-																			.append("reload")
-																			.color(ChatColor.GREEN)
-																			.create()))
-											  .event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/voxchat reload"));
+			final ComponentBuilder desc = build().append("  ")
+												 .append(ofBase(build().append("/voxchat ")
+																	   .color(ChatColor.GRAY)
+																	   .append("reload")
+																	   .color(ChatColor.GREEN)
+																	   .create()))
+												 .event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/voxchat reload"));
 
 			getCommandDescription("voxchat.command.reload").ifPresent(s -> desc.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(s))));
 
@@ -74,15 +71,13 @@ public final class CommandHelp extends VoxChatCommand
 
 		if (sender.hasPermission("voxchat.command.toggle"))
 		{
-			final ComponentBuilder desc = Comp.build()
-											  .append("  ")
-											  .append(new TextComponent(Comp.build()
-																			.append("/voxchat ")
-																			.color(ChatColor.GRAY)
-																			.append("toggle")
-																			.color(ChatColor.GREEN)
-																			.create()))
-											  .event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/voxchat toggle"));
+			final ComponentBuilder desc = build().append("  ")
+												 .append(ofBase(build().append("/voxchat ")
+																	   .color(ChatColor.GRAY)
+																	   .append("toggle")
+																	   .color(ChatColor.GREEN)
+																	   .create()))
+												 .event(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/voxchat toggle"));
 
 			getCommandDescription("voxchat.command.toggle").ifPresent(s -> desc.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(s))));
 
