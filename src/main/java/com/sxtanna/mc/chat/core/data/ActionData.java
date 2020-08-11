@@ -1,6 +1,5 @@
 package com.sxtanna.mc.chat.core.data;
 
-import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.hover.content.Text;
@@ -68,12 +67,13 @@ public abstract class ActionData
 	}
 
 	@Override
-	public String toString()
+	public final String toString()
 	{
 		return String.format("%s['%s']", getClass().getSimpleName(), text);
 	}
 
-	public static final class ActionDataHover extends ActionData
+
+	private static final class ActionDataHover extends ActionData
 	{
 
 		private ActionDataHover(@NotNull final String text)
@@ -91,7 +91,7 @@ public abstract class ActionData
 
 	}
 
-	public static final class ActionDataClickExecCmd extends ActionData
+	private static final class ActionDataClickExecCmd extends ActionData
 	{
 
 		private ActionDataClickExecCmd(@NotNull final String text)
@@ -99,15 +99,17 @@ public abstract class ActionData
 			super(text);
 		}
 
+
+		@NotNull
 		@Override
-		public @NotNull Optional<ClickEvent> getClickEvent()
+		public Optional<ClickEvent> getClickEvent()
 		{
 			return Optional.of(new ClickEvent(ClickEvent.Action.RUN_COMMAND, getText()));
 		}
 
 	}
 
-	public static final class ActionDataClickShowCmd extends ActionData
+	private static final class ActionDataClickShowCmd extends ActionData
 	{
 
 		private ActionDataClickShowCmd(@NotNull final String text)
@@ -115,15 +117,17 @@ public abstract class ActionData
 			super(text);
 		}
 
+
+		@NotNull
 		@Override
-		public @NotNull Optional<ClickEvent> getClickEvent()
+		public Optional<ClickEvent> getClickEvent()
 		{
 			return Optional.of(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, getText()));
 		}
 
 	}
 
-	public static final class ActionDataClickOpenUrl extends ActionData
+	private static final class ActionDataClickOpenUrl extends ActionData
 	{
 
 		private ActionDataClickOpenUrl(@NotNull final String text)
@@ -131,8 +135,9 @@ public abstract class ActionData
 			super(text);
 		}
 
+		@NotNull
 		@Override
-		public @NotNull Optional<ClickEvent> getClickEvent()
+		public Optional<ClickEvent> getClickEvent()
 		{
 			return Optional.of(new ClickEvent(ClickEvent.Action.OPEN_URL, getText()));
 		}
