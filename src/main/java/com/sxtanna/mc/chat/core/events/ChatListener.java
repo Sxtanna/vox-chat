@@ -1,8 +1,10 @@
 package com.sxtanna.mc.chat.core.events;
 
+import com.google.common.collect.Sets;
 import com.sxtanna.mc.chat.VoxChat;
 import com.sxtanna.mc.chat.VoxChatPlugin;
 import com.sxtanna.mc.chat.base.State;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,6 +14,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.Optional;
 
 public final class ChatListener implements State, Listener
@@ -73,7 +76,7 @@ public final class ChatListener implements State, Listener
 			return;
 		}
 
-		final boolean messageWasSent = VoxChat.send(voxChatEvent.getFormat(), voxChatEvent.getPlayer(), voxChatEvent.getMessage(), event.getRecipients());
+		final boolean messageWasSent = VoxChat.send(voxChatEvent.getFormat(), voxChatEvent.getPlayer(), voxChatEvent.getMessage(), Sets.union(Collections.singleton(Bukkit.getConsoleSender()), event.getRecipients()));
 		if (messageWasSent)
 		{
 			event.setCancelled(true);
