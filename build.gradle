@@ -16,10 +16,12 @@ repositories {
 	maven {
 		url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 	}
-	maven {
-		url = uri("http://repo.mvdw-software.be/content/groups/public/")
-	}
+	// broken repo
+	/*maven {
+		url = uri("https://repo.mvdw-software.com/content/groups/public/")
+	}*/
 	
+	mavenLocal() /* todo: remove once his repo is back online*/
 	mavenCentral()
 }
 
