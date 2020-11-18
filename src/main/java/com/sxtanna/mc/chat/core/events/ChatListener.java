@@ -77,9 +77,25 @@ public final class ChatListener implements State, Listener
 		}
 
 		final boolean messageWasSent = VoxChat.send(voxChatEvent.getFormat(), voxChatEvent.getPlayer(), voxChatEvent.getMessage(), Sets.union(Collections.singleton(Bukkit.getConsoleSender()), event.getRecipients()));
-		if (messageWasSent)
+		if (!messageWasSent)
+		{
+			return;
+		}
+
+		if (plugin.getConfig().getBoolean("options.cancel_chat_event", false))
 		{
 			event.setCancelled(true);
+		}
+		else
+		{
+			try
+			{
+				event.getRecipients().clear();
+			}
+			catch (final UnsupportedOperationException ignored)
+			{
+				// possible exception due to caller
+			}
 		}
 	}
 
