@@ -1,4 +1,12 @@
 #
+# Plugin behavior options
+#
+
+options:
+  # Whether the chat listener will actually cancel the AsyncPlayerChatEvent, or just clear its recipients.
+  cancel_chat_event: false
+
+#
 # Actions are path addressable, reusable component additions.
 #
 # =======================================
