@@ -1,7 +1,7 @@
 plugins {
 	id 'idea'
-	id 'java-library'
-	id 'com.github.johnrengelman.shadow' version '6.1.0'
+	id 'java'
+	id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
 
@@ -57,9 +57,8 @@ idea {
 	module.downloadSources = true
 }
 
-sourceSets {
-	test.compileClasspath += configurations.compileOnly
-	test.runtimeClasspath += configurations.compileOnly
+configurations {
+	testImplementation.extendsFrom(compileOnly)
 }
 
 shadowJar {
@@ -73,6 +72,8 @@ shadowJar {
 
 processResources {
 	from(sourceSets.main.resources.srcDirs) {
+		duplicatesStrategy = DuplicatesStrategy.INCLUDE
+		
 		filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
 				pluginName: project.properties["pluginName"],
 				pluginMain: project.properties["pluginMain"],
