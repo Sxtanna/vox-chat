@@ -3,7 +3,6 @@ package com.sxtanna.mc.chat.core.reader;
 import com.google.common.collect.ImmutableSet;
 import com.sxtanna.mc.chat.VoxChat;
 import com.sxtanna.mc.chat.core.data.ActionType;
-import com.sxtanna.mc.chat.util.Comp;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -18,6 +17,8 @@ import org.commonmark.node.Text;
 import org.commonmark.renderer.NodeRenderer;
 import org.jetbrains.annotations.NotNull;
 
+import org.bukkit.entity.Player;
+
 import java.util.Set;
 
 import static com.sxtanna.mc.chat.util.Comp.build;
@@ -28,10 +29,19 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 {
 
 	@NotNull
+	private final Player           player;
+	@NotNull
 	private final ComponentBuilder builder = build();
 
 	private boolean ital;
 	private boolean bold;
+
+
+	public VoxChatRender(@NotNull final Player player)
+	{
+		this.player = player;
+	}
+
 
 	@NotNull
 	public ComponentBuilder getBuilder()
@@ -71,9 +81,10 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 	@Override
 	public void visit(final Text text)
 	{
-		builder.append(ofText(text.getLiteral()), currentHasText() ?
-												  ComponentBuilder.FormatRetention.NONE :
-												  ComponentBuilder.FormatRetention.FORMATTING);
+		builder.append(ofText(VoxChat.getReplacer().apply(this.player, text.getLiteral())),
+					   currentHasText() ?
+					   ComponentBuilder.FormatRetention.NONE :
+					   ComponentBuilder.FormatRetention.FORMATTING);
 
 		if (ital)
 		{

@@ -87,13 +87,13 @@ public final class FormatManager implements State
 			return Optional.empty();
 		}
 
-		final Optional<Node> node = reader.read(plugin.getReplacer().apply(player, data.get().getFormatText()));
+		final Optional<Node> node = reader.read(data.get().getFormatText());
 		if (!node.isPresent())
 		{
 			return Optional.empty();
 		}
 
-		final VoxChatRender render = new VoxChatRender();
+		final VoxChatRender render = new VoxChatRender(player);
 		render.render(node.get());
 
 
