@@ -68,7 +68,7 @@ public final class ChatListener implements State, Listener
 		}
 
 
-		final VoxChatEvent voxChatEvent = new VoxChatEvent(player, formatName.get(), message);
+		final VoxChatEvent voxChatEvent = new VoxChatEvent(event.isAsynchronous(), player, formatName.get(), message);
 		plugin.getServer().getPluginManager().callEvent(voxChatEvent);
 
 		if (voxChatEvent.isCancelled())

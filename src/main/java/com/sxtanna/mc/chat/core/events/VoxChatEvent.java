@@ -27,13 +27,18 @@ public final class VoxChatEvent extends Event implements Cancellable
 	private boolean cancelled;
 
 
-	public VoxChatEvent(@NotNull final Player player, @NotNull final String format, @NotNull final String message)
+	public VoxChatEvent(final boolean async, @NotNull final Player player, @NotNull final String format, @NotNull final String message)
 	{
-		super(true);
+		super(async);
 
 		this.player  = player;
 		this.format  = format;
 		this.message = message;
+	}
+
+	public VoxChatEvent(@NotNull final Player player, @NotNull final String format, @NotNull final String message)
+	{
+		this(true, player, format, message);
 	}
 
 
