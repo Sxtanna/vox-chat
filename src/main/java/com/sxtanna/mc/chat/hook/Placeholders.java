@@ -3,6 +3,7 @@ package com.sxtanna.mc.chat.hook;
 import com.sxtanna.mc.chat.base.State;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,6 +61,29 @@ public final class Placeholders implements State
 			{
 				plugin.getLogger().log(Level.WARNING, "failed to register replacer for MVdWPlaceholderAPI", ex);
 			}
+		}
+
+		if (added.isEmpty())
+		{
+			hooked.add((player, text) -> {
+				final Player online = player == null ? null : player.getPlayer();
+				if (online == null)
+				{
+					return text;
+				}
+
+				String replaced = text;
+
+				final String name = player.getName();
+				if (name != null)
+				{
+					replaced = replaced.replace("%player%", name);
+				}
+
+				// todo: more built in replacements?
+
+				return replaced;
+			});
 		}
 
 		if (plugin.getConfig().getBoolean("options.extras.replacers.items_adder.in_formats"))
