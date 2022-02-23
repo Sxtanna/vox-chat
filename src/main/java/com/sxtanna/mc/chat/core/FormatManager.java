@@ -110,19 +110,27 @@ public final class FormatManager implements State
 			final BaseComponent[] messageComponent = of(message);
 			if (!data.get().allowsColors())
 			{
-				walk(messageComponent, component -> component.setColor(null));
+				final String bypassPermission = plugin.getConfig().getString("options.bypass.colors_permission");
+				if (bypassPermission == null || !player.hasPermission(bypassPermission))
+				{
+					walk(messageComponent, component -> component.setColor(null));
+				}
 			}
 
-			if (!data.get().allowsFormat())
+			if (!data.get().allowsFormat() && !player.hasPermission("voxchat.bypass.format"))
 			{
-				walk(messageComponent, component ->
+				final String bypassPermission = plugin.getConfig().getString("options.bypass.format_permission");
+				if (bypassPermission == null || !player.hasPermission(bypassPermission))
 				{
-					component.setBold(null);
-					component.setItalic(null);
-					component.setUnderlined(null);
-					component.setObfuscated(null);
-					component.setStrikethrough(null);
-				});
+					walk(messageComponent, component ->
+					{
+						component.setBold(null);
+						component.setItalic(null);
+						component.setUnderlined(null);
+						component.setObfuscated(null);
+						component.setStrikethrough(null);
+					});
+				}
 			}
 
 			for (final BaseComponent component : messageComponent)

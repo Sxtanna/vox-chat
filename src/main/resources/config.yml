@@ -5,6 +5,13 @@
 options:
   # Whether the chat listener will actually cancel the AsyncPlayerChatEvent, or just clear its recipients.
   cancel_chat_event: false
+  # Format bypassing options
+  bypass:
+    # Permission for whether a player can always use color codes, regardless of the format
+    colors_permission: "voxchat.bypass.colors"
+    # Permission for whether a player can always use format codes, regardless of the format
+    format_permission: "voxchat.bypass.format"
+
 
 #
 # Actions are path addressable, reusable component additions.
