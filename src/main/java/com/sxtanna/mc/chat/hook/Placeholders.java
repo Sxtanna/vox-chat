@@ -62,6 +62,25 @@ public final class Placeholders implements State
 			}
 		}
 
+		if (plugin.getConfig().getBoolean("options.extras.replacers.items_adder.in_formats"))
+		{
+			try
+			{
+				final Replacer replacer = IAFontImages.get();
+				if (replacer != null)
+				{
+					// this is proxied to avoid permission checking on the player, since this only replaces values in the format
+					hooked.add(($, text) -> replacer.replace(null, text));
+				}
+
+				added.add("ItemsAdder");
+			}
+			catch (final Throwable ex)
+			{
+				plugin.getLogger().log(Level.WARNING, "failed to register replacer for ItemsAdder", ex);
+			}
+		}
+
 		if (!added.isEmpty())
 		{
 			plugin.getLogger().info("Successfully registered replacers for " + added + ".");
@@ -89,7 +108,7 @@ public final class Placeholders implements State
 
 
 	@FunctionalInterface
-	private interface Replacer
+	public interface Replacer
 	{
 
 		@NotNull

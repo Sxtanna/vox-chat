@@ -12,6 +12,10 @@ options:
       clip_papi: true
       # Whether the plugin should attempt to replace mvdw_placeholderapi placeholders
       mvdw_papi: true
+      # Whether the plugin should attempt to replace items adder font images, ex. :heart:
+      items_adder:
+        in_formats: true
+        in_message: true
   # Format bypassing options
   bypass:
     # Permission for whether a player can always use color codes, regardless of the format

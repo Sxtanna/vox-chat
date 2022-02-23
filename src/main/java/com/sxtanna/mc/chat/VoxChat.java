@@ -2,6 +2,7 @@ package com.sxtanna.mc.chat;
 
 import com.sxtanna.mc.chat.core.ActionManager;
 import com.sxtanna.mc.chat.core.FormatManager;
+import com.sxtanna.mc.chat.hook.IAFontImages;
 import com.sxtanna.mc.chat.hook.Placeholders;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.command.CommandSender;
@@ -31,7 +32,19 @@ public final class VoxChat
 
 	public static boolean send(@NotNull final String format, @NotNull final Player player, @NotNull final String message, @NotNull final Collection<? extends CommandSender> recipients)
 	{
-		final Optional<BaseComponent[]> components = getFormatManager().prepare(format, player, message);
+		String temp = message;
+
+		if (getInstance().getPlugin().getConfig().getBoolean("options.extras.replacers.items_adder.in_message"))
+		{
+			final Placeholders.Replacer replacer = IAFontImages.get();
+			if (replacer != null)
+			{
+				temp = replacer.replace(player, temp);
+			}
+		}
+
+
+		final Optional<BaseComponent[]> components = getFormatManager().prepare(format, player, temp);
 		if (!components.isPresent())
 		{
 			return false;
