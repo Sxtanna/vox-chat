@@ -5,6 +5,13 @@
 options:
   # Whether the chat listener will actually cancel the AsyncPlayerChatEvent, or just clear its recipients.
   cancel_chat_event: false
+  # Extra features
+  extras:
+    replacers:
+      # Whether the plugin should attempt to replace placeholderapi placeholders
+      clip_papi: true
+      # Whether the plugin should attempt to replace mvdw_placeholderapi placeholders
+      mvdw_papi: true
   # Format bypassing options
   bypass:
     # Permission for whether a player can always use color codes, regardless of the format

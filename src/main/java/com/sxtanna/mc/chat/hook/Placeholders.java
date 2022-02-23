@@ -30,13 +30,16 @@ public final class Placeholders implements State
 	@Override
 	public void load()
 	{
-		if (Bukkit.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI"))
+		final List<String> added = new ArrayList<>();
+
+		if (plugin.getConfig().getBoolean("options.extras.replacers.clip_papi") &&
+			Bukkit.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI"))
 		{
 			try
 			{
 				hooked.add(me.clip.placeholderapi.PlaceholderAPI::setPlaceholders);
 
-				plugin.getLogger().info("Successfully registered replacer for PlaceholderAPI");
+				added.add("PlaceholderAPI");
 			}
 			catch (final Throwable ex)
 			{
@@ -44,19 +47,24 @@ public final class Placeholders implements State
 			}
 		}
 
-		if (Bukkit.getServer().getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
+		if (plugin.getConfig().getBoolean("options.extras.replacers.mvdw_papi") &&
+			Bukkit.getServer().getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
 		{
 			try
 			{
 				//noinspection NullableProblems
 				hooked.add(be.maximvdw.placeholderapi.PlaceholderAPI::replacePlaceholders);
 
-				plugin.getLogger().info("Successfully registered replacer for MVdWPlaceholderAPI");
+				added.add("MVdWPlaceholderAPI");
 			}
 			catch (final Throwable ex)
 			{
 				plugin.getLogger().log(Level.WARNING, "failed to register replacer for MVdWPlaceholderAPI", ex);
 			}
+		}
+
+		if (!added.isEmpty()) {
+			plugin.getLogger().info("Successfully registered replacers for " + added + ".");
 		}
 	}
 
