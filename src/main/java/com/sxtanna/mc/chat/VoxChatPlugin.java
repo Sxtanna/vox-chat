@@ -129,6 +129,8 @@ public final class VoxChatPlugin extends JavaPlugin
 	{
 		try
 		{
+			replacer.kill();
+
 			actionManager.kill();
 			formatManager.kill();
 
@@ -136,6 +138,8 @@ public final class VoxChatPlugin extends JavaPlugin
 
 			actionManager.load();
 			formatManager.load();
+
+			replacer.load();
 		}
 		catch (final Throwable ex)
 		{
