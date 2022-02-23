@@ -20,7 +20,6 @@ public final class Placeholders implements State
 	private final List<Replacer> hooked = new ArrayList<>();
 
 
-	@NotNull
 	public Placeholders(@NotNull final Plugin plugin)
 	{
 		this.plugin = plugin;
@@ -63,7 +62,8 @@ public final class Placeholders implements State
 			}
 		}
 
-		if (!added.isEmpty()) {
+		if (!added.isEmpty())
+		{
 			plugin.getLogger().info("Successfully registered replacers for " + added + ".");
 		}
 	}
