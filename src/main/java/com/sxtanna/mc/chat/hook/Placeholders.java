@@ -95,9 +95,8 @@ public final class Placeholders implements State
 				{
 					// this is proxied to avoid permission checking on the player, since this only replaces values in the format
 					hooked.add(($, text) -> replacer.replace(null, text));
+					added.add("ItemsAdder");
 				}
-
-				added.add("ItemsAdder");
 			}
 			catch (final Throwable ex)
 			{
