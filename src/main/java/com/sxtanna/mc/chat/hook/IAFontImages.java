@@ -15,7 +15,7 @@ public final class IAFontImages
 
     static
     {
-        if (Bukkit.getServer().getPluginManager().isPluginEnabled("ItemsAdder"))
+        if (Bukkit.getServer().getPluginManager().getPlugin("ItemsAdder") != null)
         {
             replacer = new IAFontImageReplacer();
         }
