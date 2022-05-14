@@ -18,7 +18,8 @@ import java.util.regex.Pattern;
 public final class Comp
 {
 
-	private static final Pattern HEX_COLOR = Pattern.compile("&#(?<hex>[0-9a-fA-F]{6})");
+	@NotNull
+	public static final Pattern HEX_COLOR = Pattern.compile("&#(?<hex>[0-9a-fA-F]{6})");
 
 	private Comp()
 	{}
