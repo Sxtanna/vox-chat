@@ -34,9 +34,7 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
 																		  new CommandReload(),
 																		  new CommandToggle());
 
-	@NotNull
-	@Unmodifiable
-	private static Map<String, VoxChatCommand> generateLookupMap()
+	private static @NotNull @Unmodifiable Map<String, VoxChatCommand> generateLookupMap()
 	{
 		final ImmutableMap.Builder<String, VoxChatCommand> builder = ImmutableMap.builder();
 

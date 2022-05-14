@@ -42,23 +42,20 @@ public final class VoxChatEvent extends Event implements Cancellable
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
-	public Player getPlayer()
+	public @NotNull Player getPlayer()
 	{
 		return player;
 	}
 
-	@NotNull
 	@Contract(pure = true)
-	public String getFormat()
+	public @NotNull String getFormat()
 	{
 		return format;
 	}
 
-	@NotNull
 	@Contract(pure = true)
-	public String getMessage()
+	public @NotNull String getMessage()
 	{
 		return message;
 	}
@@ -85,10 +82,9 @@ public final class VoxChatEvent extends Event implements Cancellable
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
 	@Override
-	public HandlerList getHandlers()
+	public @NotNull HandlerList getHandlers()
 	{
 		return HANDLERS;
 	}
@@ -126,9 +122,8 @@ public final class VoxChatEvent extends Event implements Cancellable
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
-	public static HandlerList getHandlerList()
+	public static @NotNull HandlerList getHandlerList()
 	{
 		return HANDLERS;
 	}

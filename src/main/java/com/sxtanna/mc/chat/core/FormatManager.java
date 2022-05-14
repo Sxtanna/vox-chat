@@ -59,15 +59,12 @@ public final class FormatManager implements State
 	}
 
 
-	@NotNull
-	@Unmodifiable
-	public Set<String> list()
+	public @NotNull @Unmodifiable Set<String> list()
 	{
 		return ImmutableSet.copyOf(cached.keySet());
 	}
 
-	@NotNull
-	public Optional<FormatData> find(@NotNull final String name)
+	public @NotNull Optional<FormatData> find(@NotNull final String name)
 	{
 		return Optional.ofNullable(cached.get(name.toLowerCase()));
 	}
@@ -78,8 +75,7 @@ public final class FormatManager implements State
 	}
 
 
-	@NotNull
-	public Optional<BaseComponent[]> prepare(@NotNull final String name, @NotNull final Player player, @NotNull final String message)
+	public @NotNull Optional<BaseComponent[]> prepare(@NotNull final String name, @NotNull final Player player, @NotNull final String message)
 	{
 		final Optional<FormatData> data = find(name);
 		if (!data.isPresent())

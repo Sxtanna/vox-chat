@@ -98,37 +98,32 @@ public final class VoxChatPlugin extends JavaPlugin
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
-	public ActionManager getActionManager()
+	public @NotNull ActionManager getActionManager()
 	{
 		return actionManager;
 	}
 
-	@NotNull
 	@Contract(pure = true)
-	public FormatManager getFormatManager()
+	public @NotNull FormatManager getFormatManager()
 	{
 		return formatManager;
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
-	public Placeholders getReplacer()
+	public @NotNull Placeholders getReplacer()
 	{
 		return replacer;
 	}
 
-	@NotNull
 	@Contract(pure = true)
-	public ChatListener getListener()
+	public @NotNull ChatListener getListener()
 	{
 		return listener;
 	}
 
-	@NotNull
-	public Optional<Throwable> reloadPlugin()
+	public @NotNull Optional<Throwable> reloadPlugin()
 	{
 		try
 		{

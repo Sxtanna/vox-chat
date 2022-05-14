@@ -10,9 +10,8 @@ public enum ActionType
 {
 	HOVER
 			{
-				@NotNull
 				@Override
-				public Optional<ActionData> read(@NotNull final ConfigurationSection section)
+				public @NotNull Optional<ActionData> read(@NotNull final ConfigurationSection section)
 				{
 					final String text;
 
@@ -31,9 +30,8 @@ public enum ActionType
 			},
 	CLICK
 			{
-				@NotNull
 				@Override
-				public Optional<ActionData> read(@NotNull final ConfigurationSection section)
+				public @NotNull Optional<ActionData> read(@NotNull final ConfigurationSection section)
 				{
 					final Set<String> keys = section.getKeys(false);
 					if (keys.size() != 1)
@@ -70,12 +68,10 @@ public enum ActionType
 			};
 
 
-	@NotNull
-	public abstract Optional<ActionData> read(@NotNull final ConfigurationSection section);
+	public abstract @NotNull Optional<ActionData> read(@NotNull final ConfigurationSection section);
 
 
-	@NotNull
-	public static Optional<ActionType> find(@NotNull final String name)
+	public static @NotNull Optional<ActionType> find(@NotNull final String name)
 	{
 		switch (name.toLowerCase())
 		{

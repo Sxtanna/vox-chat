@@ -43,8 +43,7 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 	}
 
 
-	@NotNull
-	public ComponentBuilder getBuilder()
+	public @NotNull ComponentBuilder getBuilder()
 	{
 		return clean(builder);
 	}

@@ -17,8 +17,7 @@ public final class VoxChatReader
 										.build();
 
 
-	@NotNull
-	public Optional<Node> read(@NotNull @Language("Markdown") final String text)
+	public @NotNull Optional<Node> read(@NotNull @Language("Markdown") final String text)
 	{
 		try
 		{

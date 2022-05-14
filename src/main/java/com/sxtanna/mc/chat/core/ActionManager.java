@@ -39,8 +39,7 @@ public final class ActionManager implements State
 	}
 
 
-	@NotNull
-	public Optional<ActionData> find(@NotNull final ActionType type, @NotNull final String name)
+	public @NotNull Optional<ActionData> find(@NotNull final ActionType type, @NotNull final String name)
 	{
 		return Optional.ofNullable(cached.get(type)).map(map -> map.get(name.toLowerCase()));
 	}

@@ -117,8 +117,7 @@ public final class Placeholders implements State
 	}
 
 
-	@NotNull
-	public String apply(@Nullable final OfflinePlayer player, @NotNull final String text)
+	public @NotNull String apply(@Nullable final OfflinePlayer player, @NotNull final String text)
 	{
 		if (hooked.isEmpty())
 		{
@@ -134,8 +133,7 @@ public final class Placeholders implements State
 	public interface Replacer
 	{
 
-		@NotNull
-		String replace(@Nullable final OfflinePlayer player, @NotNull final String text);
+		@NotNull String replace(@Nullable final OfflinePlayer player, @NotNull final String text);
 
 	}
 

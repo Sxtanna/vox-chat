@@ -23,22 +23,19 @@ public abstract class ActionData
 		this.text = text;
 	}
 
-	@NotNull
 	@Contract(pure = true)
-	public final String getText()
+	public final @NotNull String getText()
 	{
 		return text;
 	}
 
 
-	@NotNull
-	public Optional<ClickEvent> getClickEvent()
+	public @NotNull Optional<ClickEvent> getClickEvent()
 	{
 		return Optional.empty();
 	}
 
-	@NotNull
-	public Optional<HoverEvent> getHoverEvent()
+	public @NotNull Optional<HoverEvent> getHoverEvent()
 	{
 		return Optional.empty();
 	}
@@ -82,9 +79,8 @@ public abstract class ActionData
 		}
 
 
-		@NotNull
 		@Override
-		public Optional<HoverEvent> getHoverEvent()
+		public @NotNull Optional<HoverEvent> getHoverEvent()
 		{
 			return Optional.of(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(of(getText()))));
 		}
@@ -100,9 +96,8 @@ public abstract class ActionData
 		}
 
 
-		@NotNull
 		@Override
-		public Optional<ClickEvent> getClickEvent()
+		public @NotNull Optional<ClickEvent> getClickEvent()
 		{
 			return Optional.of(new ClickEvent(ClickEvent.Action.RUN_COMMAND, getText()));
 		}
@@ -118,9 +113,8 @@ public abstract class ActionData
 		}
 
 
-		@NotNull
 		@Override
-		public Optional<ClickEvent> getClickEvent()
+		public @NotNull Optional<ClickEvent> getClickEvent()
 		{
 			return Optional.of(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, getText()));
 		}
@@ -135,9 +129,8 @@ public abstract class ActionData
 			super(text);
 		}
 
-		@NotNull
 		@Override
-		public Optional<ClickEvent> getClickEvent()
+		public @NotNull Optional<ClickEvent> getClickEvent()
 		{
 			return Optional.of(new ClickEvent(ClickEvent.Action.OPEN_URL, getText()));
 		}
@@ -145,30 +138,26 @@ public abstract class ActionData
 	}
 
 
-	@NotNull
 	@Contract("_ -> new")
-	public static ActionData hover(@NotNull final String text)
+	public static @NotNull ActionData hover(@NotNull final String text)
 	{
 		return new ActionDataHover(text);
 	}
 
-	@NotNull
 	@Contract("_ -> new")
-	public static ActionData clickExecCmd(@NotNull final String text)
+	public static @NotNull ActionData clickExecCmd(@NotNull final String text)
 	{
 		return new ActionDataClickExecCmd(text);
 	}
 
-	@NotNull
 	@Contract("_ -> new")
-	public static ActionData clickShowCmd(@NotNull final String text)
+	public static @NotNull ActionData clickShowCmd(@NotNull final String text)
 	{
 		return new ActionDataClickShowCmd(text);
 	}
 
-	@NotNull
 	@Contract("_ -> new")
-	public static ActionData clickOpenUrl(@NotNull final String text)
+	public static @NotNull ActionData clickOpenUrl(@NotNull final String text)
 	{
 		return new ActionDataClickOpenUrl(text);
 	}

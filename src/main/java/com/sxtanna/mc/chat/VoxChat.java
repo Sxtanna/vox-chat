@@ -18,14 +18,12 @@ public final class VoxChat
 
 	static VoxChat INSTANCE;
 
-	@NotNull
-	private static VoxChat getInstance()
+	private static @NotNull VoxChat getInstance()
 	{
 		return Objects.requireNonNull(INSTANCE, "VoxChat has not be enabled yet!");
 	}
 
-	@NotNull
-	public static Optional<String> find(@NotNull final Player player)
+	public static @NotNull Optional<String> find(@NotNull final Player player)
 	{
 		return getFormatManager().list().stream().filter(name -> player.hasPermission("voxchat.format." + name)).findFirst();
 	}
@@ -55,20 +53,17 @@ public final class VoxChat
 	}
 
 
-	@NotNull
-	public static ActionManager getActionManager()
+	public static @NotNull ActionManager getActionManager()
 	{
 		return getInstance().getPlugin().getActionManager();
 	}
 
-	@NotNull
-	public static FormatManager getFormatManager()
+	public static @NotNull FormatManager getFormatManager()
 	{
 		return getInstance().getPlugin().getFormatManager();
 	}
 
-	@NotNull
-	public static Placeholders getReplacer()
+	public static @NotNull Placeholders getReplacer()
 	{
 		return getInstance().getPlugin().getReplacer();
 	}
@@ -84,8 +79,7 @@ public final class VoxChat
 	}
 
 
-	@NotNull
-	public VoxChatPlugin getPlugin()
+	public @NotNull VoxChatPlugin getPlugin()
 	{
 		return plugin;
 	}

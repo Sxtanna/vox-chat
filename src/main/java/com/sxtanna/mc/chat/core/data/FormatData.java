@@ -29,9 +29,8 @@ public final class FormatData
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
-	public String getName()
+	public @NotNull String getName()
 	{
 		return name;
 	}
@@ -50,9 +49,8 @@ public final class FormatData
 	}
 
 
-	@NotNull
 	@Contract(pure = true)
-	public String getFormatText()
+	public @NotNull String getFormatText()
 	{
 		return formatText;
 	}

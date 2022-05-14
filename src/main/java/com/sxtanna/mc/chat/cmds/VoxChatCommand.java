@@ -34,23 +34,18 @@ public abstract class VoxChatCommand
 	}
 
 
-	@NotNull
-	public final String getLabel()
+	public final @NotNull String getLabel()
 	{
 		return labels.get(0);
 	}
 
 
-	@NotNull
-	@Unmodifiable
-	public final List<String> getAllLabels()
+	public final @NotNull @Unmodifiable List<String> getAllLabels()
 	{
 		return labels;
 	}
 
-	@NotNull
-	@Unmodifiable
-	public final List<String> getAltLabels()
+	public final @NotNull @Unmodifiable List<String> getAltLabels()
 	{
 		return labels.subList(1, labels.size());
 	}
@@ -63,8 +58,7 @@ public abstract class VoxChatCommand
 	{}
 
 
-	@NotNull
-	protected final VoxChatPlugin getPlugin()
+	protected final @NotNull VoxChatPlugin getPlugin()
 	{
 		return plugin;
 	}
@@ -75,8 +69,7 @@ public abstract class VoxChatCommand
 	}
 
 
-	@NotNull
-	protected final ComponentBuilder prefix()
+	protected final @NotNull ComponentBuilder prefix()
 	{
 		return build().append("::")
 					  .color(WHITE)

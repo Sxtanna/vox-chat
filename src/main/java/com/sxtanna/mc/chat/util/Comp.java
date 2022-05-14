@@ -53,14 +53,12 @@ public final class Comp
 		return String.format("%sx%s", ChatColor.COLOR_CHAR, hex.replaceAll(".", String.format("%s$0", ChatColor.COLOR_CHAR)));
 	}
 
-	@NotNull
-	public static BaseComponent[] of(@NotNull final String text)
+	public static @NotNull BaseComponent[] of(@NotNull final String text)
 	{
 		return TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', preprocessHexColors(text)));
 	}
 
-	@NotNull
-	public static TextComponent ofText(@NotNull final String text)
+	public static @NotNull TextComponent ofText(@NotNull final String text)
 	{
 		return ofBase(of(text));
 	}
@@ -72,17 +70,15 @@ public final class Comp
 	}
 
 
-	@NotNull
 	@Contract(value = " -> new", pure = true)
-	public static ComponentBuilder build()
+	public static @NotNull ComponentBuilder build()
 	{
 		return new ComponentBuilder();
 	}
 
 
-	@NotNull
 	@Contract("_ -> param1")
-	public static ComponentBuilder clean(@NotNull final ComponentBuilder builder)
+	public static @NotNull ComponentBuilder clean(@NotNull final ComponentBuilder builder)
 	{
 		final Iterator<BaseComponent> iterator = builder.getParts().iterator();
 		while (iterator.hasNext())
@@ -123,8 +119,7 @@ public final class Comp
 	}
 
 
-	@NotNull
-	public static BaseComponent[] filter(@NotNull final BaseComponent[] components, @NotNull final Predicate<BaseComponent> predicate)
+	public static @NotNull BaseComponent[] filter(@NotNull final BaseComponent[] components, @NotNull final Predicate<BaseComponent> predicate)
 	{
 		final List<BaseComponent> matches = new ArrayList<>();
 
