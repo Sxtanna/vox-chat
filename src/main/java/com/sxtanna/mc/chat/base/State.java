@@ -2,7 +2,9 @@ package com.sxtanna.mc.chat.base;
 
 public interface State
 {
-	void load();
 
-	void kill();
+    void load();
+
+    void kill();
+
 }

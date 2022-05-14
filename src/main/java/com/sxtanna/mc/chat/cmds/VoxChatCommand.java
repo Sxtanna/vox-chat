@@ -1,14 +1,18 @@
 package com.sxtanna.mc.chat.cmds;
 
-import com.google.common.collect.ImmutableList;
-import com.sxtanna.mc.chat.VoxChatPlugin;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
+
+import org.bukkit.command.CommandSender;
+
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.hover.content.Text;
-import org.bukkit.command.CommandSender;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
+
+import com.sxtanna.mc.chat.VoxChatPlugin;
+
+import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,109 +25,109 @@ import static net.md_5.bungee.api.ChatColor.YELLOW;
 public abstract class VoxChatCommand
 {
 
-	private VoxChatPlugin plugin;
+    private VoxChatPlugin plugin;
 
-	@NotNull
-	@Unmodifiable
-	private final List<String> labels;
-
-
-	protected VoxChatCommand(@NotNull final String label, @NotNull final String... aliases)
-	{
-		this.labels = ImmutableList.<String>builder().add(label).add(aliases).build();
-	}
+    @NotNull
+    @Unmodifiable
+    private final List<String> labels;
 
 
-	public final @NotNull String getLabel()
-	{
-		return labels.get(0);
-	}
+    protected VoxChatCommand(@NotNull final String label, @NotNull final String... aliases)
+    {
+        this.labels = ImmutableList.<String>builder().add(label).add(aliases).build();
+    }
 
 
-	public final @NotNull @Unmodifiable List<String> getAllLabels()
-	{
-		return labels;
-	}
-
-	public final @NotNull @Unmodifiable List<String> getAltLabels()
-	{
-		return labels.subList(1, labels.size());
-	}
+    public final @NotNull String getLabel()
+    {
+        return labels.get(0);
+    }
 
 
-	protected void evaluate(@NotNull final CommandSender sender, @NotNull final String label, @NotNull @Unmodifiable final List<String> params)
-	{}
+    public final @NotNull @Unmodifiable List<String> getAllLabels()
+    {
+        return labels;
+    }
 
-	protected void complete(@NotNull final CommandSender sender, @NotNull final String label, @NotNull @Unmodifiable final List<String> params, @NotNull final List<String> suggestions)
-	{}
-
-
-	protected final @NotNull VoxChatPlugin getPlugin()
-	{
-		return plugin;
-	}
-
-	final void setPlugin(@NotNull final VoxChatPlugin plugin)
-	{
-		this.plugin = plugin;
-	}
+    public final @NotNull @Unmodifiable List<String> getAltLabels()
+    {
+        return labels.subList(1, labels.size());
+    }
 
 
-	protected final @NotNull ComponentBuilder prefix()
-	{
-		return build().append("::")
-					  .color(WHITE)
-					  .bold(true)
+    protected void evaluate(@NotNull final CommandSender sender, @NotNull final String label, @NotNull @Unmodifiable final List<String> params)
+    {}
 
-					  .append(" VoxChat ")
-					  .color(DARK_GRAY)
-					  .bold(true)
-
-					  .event(new ClickEvent(ClickEvent.Action.OPEN_URL, getPlugin().getDescription().getWebsite()))
-					  .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(build().append("v")
-																						 .color(DARK_GRAY)
-																						 .bold(false)
-																						 .append(getPlugin().getDescription().getVersion())
-																						 .color(WHITE)
-																						 .append("\n")
-																						 .append("  - Sxtanna")
-																						 .color(YELLOW)
-																						 .create())))
-
-					  .append("::")
-					  .color(WHITE)
-					  .bold(true)
-
-					  .append("")
-					  .retain(ComponentBuilder.FormatRetention.NONE);
-	}
+    protected void complete(@NotNull final CommandSender sender, @NotNull final String label, @NotNull @Unmodifiable final List<String> params, @NotNull final List<String> suggestions)
+    {}
 
 
-	@Override
-	public final boolean equals(final Object o)
-	{
-		if (this == o)
-		{
-			return true;
-		}
-		if (!(o instanceof VoxChatCommand))
-		{
-			return false;
-		}
-		final VoxChatCommand that = (VoxChatCommand) o;
-		return labels.equals(that.labels);
-	}
+    protected final @NotNull VoxChatPlugin getPlugin()
+    {
+        return plugin;
+    }
 
-	@Override
-	public final int hashCode()
-	{
-		return Objects.hash(labels);
-	}
+    final void setPlugin(@NotNull final VoxChatPlugin plugin)
+    {
+        this.plugin = plugin;
+    }
 
-	@Override
-	public final String toString()
-	{
-		return String.format("VoxChatCommand[labels=%s]", labels);
-	}
+
+    protected final @NotNull ComponentBuilder prefix()
+    {
+        return build().append("::")
+                      .color(WHITE)
+                      .bold(true)
+
+                      .append(" VoxChat ")
+                      .color(DARK_GRAY)
+                      .bold(true)
+
+                      .event(new ClickEvent(ClickEvent.Action.OPEN_URL, getPlugin().getDescription().getWebsite()))
+                      .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(build().append("v")
+                                                                                         .color(DARK_GRAY)
+                                                                                         .bold(false)
+                                                                                         .append(getPlugin().getDescription().getVersion())
+                                                                                         .color(WHITE)
+                                                                                         .append("\n")
+                                                                                         .append("  - Sxtanna")
+                                                                                         .color(YELLOW)
+                                                                                         .create())))
+
+                      .append("::")
+                      .color(WHITE)
+                      .bold(true)
+
+                      .append("")
+                      .retain(ComponentBuilder.FormatRetention.NONE);
+    }
+
+
+    @Override
+    public final boolean equals(final Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (!(o instanceof VoxChatCommand))
+        {
+            return false;
+        }
+        final VoxChatCommand that = (VoxChatCommand) o;
+        return labels.equals(that.labels);
+    }
+
+    @Override
+    public final int hashCode()
+    {
+        return Objects.hash(labels);
+    }
+
+    @Override
+    public final String toString()
+    {
+        return String.format("VoxChatCommand[labels=%s]", labels);
+    }
 
 }
