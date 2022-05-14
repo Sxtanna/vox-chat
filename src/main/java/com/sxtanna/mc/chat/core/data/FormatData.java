@@ -32,27 +32,27 @@ public final class FormatData
     @Contract(pure = true)
     public @NotNull String getName()
     {
-        return name;
+        return this.name;
     }
 
 
     @Contract(pure = true)
     public boolean allowsColors()
     {
-        return allowColors;
+        return this.allowColors;
     }
 
     @Contract(pure = true)
     public boolean allowsFormat()
     {
-        return allowFormat;
+        return this.allowFormat;
     }
 
 
     @Contract(pure = true)
     public @NotNull String getFormatText()
     {
-        return formatText;
+        return this.formatText;
     }
 
 
@@ -69,22 +69,22 @@ public final class FormatData
         }
 
         final FormatData that = (FormatData) o;
-        return allowColors == that.allowColors &&
-               allowFormat == that.allowFormat &&
-               getName().equals(that.getName()) &&
-               getFormatText().equals(that.getFormatText());
+        return this.allowColors == that.allowColors &&
+               this.allowFormat == that.allowFormat &&
+               this.name.equals(that.name) &&
+               this.formatText.equals(that.formatText);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getName(), allowColors, allowFormat, getFormatText());
+        return Objects.hash(this.name, this.allowColors, this.allowFormat, this.formatText);
     }
 
     @Override
     public String toString()
     {
-        return String.format("FormatData[name='%s', colors=%s, format=%s, formatText='%s']", name, allowColors, allowFormat, formatText);
+        return String.format("FormatData[name='%s', colors=%s, format=%s, formatText='%s']", this.name, this.allowColors, this.allowFormat, this.formatText);
     }
 
 }

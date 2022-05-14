@@ -62,14 +62,14 @@ public final class VoxChatPlugin extends JavaPlugin
         }
 
 
-        actionManager.load();
-        formatManager.load();
+        this.actionManager.load();
+        this.formatManager.load();
 
-        replacer.load();
-        listener.load();
+        this.replacer.load();
+        this.listener.load();
 
-        getServer().getServicesManager().register(VoxChat.class, api, this, ServicePriority.Normal);
-        VoxChat.INSTANCE = api;
+        getServer().getServicesManager().register(VoxChat.class, this.api, this, ServicePriority.Normal);
+        VoxChat.INSTANCE = this.api;
 
         final PluginCommand command = getCommand("voxchat");
         if (command != null)
@@ -84,11 +84,11 @@ public final class VoxChatPlugin extends JavaPlugin
     @Override
     public void onDisable()
     {
-        listener.kill();
-        replacer.kill();
+        this.listener.kill();
+        this.replacer.kill();
 
-        actionManager.kill();
-        formatManager.kill();
+        this.actionManager.kill();
+        this.formatManager.kill();
 
         final PluginCommand command = getCommand("voxchat");
         if (command != null)
@@ -97,7 +97,7 @@ public final class VoxChatPlugin extends JavaPlugin
             command.setTabCompleter(null);
         }
 
-        getServer().getServicesManager().unregister(VoxChat.class, api);
+        getServer().getServicesManager().unregister(VoxChat.class, this.api);
         VoxChat.INSTANCE = null;
     }
 
@@ -105,43 +105,43 @@ public final class VoxChatPlugin extends JavaPlugin
     @Contract(pure = true)
     public @NotNull ActionManager getActionManager()
     {
-        return actionManager;
+        return this.actionManager;
     }
 
     @Contract(pure = true)
     public @NotNull FormatManager getFormatManager()
     {
-        return formatManager;
+        return this.formatManager;
     }
 
 
     @Contract(pure = true)
     public @NotNull Placeholders getReplacer()
     {
-        return replacer;
+        return this.replacer;
     }
 
     @Contract(pure = true)
     public @NotNull ChatListener getListener()
     {
-        return listener;
+        return this.listener;
     }
 
     public @NotNull Optional<Throwable> reloadPlugin()
     {
         try
         {
-            replacer.kill();
+            this.replacer.kill();
 
-            actionManager.kill();
-            formatManager.kill();
+            this.actionManager.kill();
+            this.formatManager.kill();
 
             reloadConfig();
 
-            actionManager.load();
-            formatManager.load();
+            this.actionManager.load();
+            this.formatManager.load();
 
-            replacer.load();
+            this.replacer.load();
         }
         catch (final Throwable ex)
         {

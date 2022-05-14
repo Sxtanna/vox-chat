@@ -40,18 +40,18 @@ public abstract class VoxChatCommand
 
     public final @NotNull String getLabel()
     {
-        return labels.get(0);
+        return this.labels.get(0);
     }
 
 
     public final @NotNull @Unmodifiable List<String> getAllLabels()
     {
-        return labels;
+        return this.labels;
     }
 
     public final @NotNull @Unmodifiable List<String> getAltLabels()
     {
-        return labels.subList(1, labels.size());
+        return this.labels.subList(1, this.labels.size());
     }
 
 
@@ -64,7 +64,7 @@ public abstract class VoxChatCommand
 
     protected final @NotNull VoxChatPlugin getPlugin()
     {
-        return plugin;
+        return this.plugin;
     }
 
     final void setPlugin(@NotNull final VoxChatPlugin plugin)
@@ -115,19 +115,19 @@ public abstract class VoxChatCommand
             return false;
         }
         final VoxChatCommand that = (VoxChatCommand) o;
-        return labels.equals(that.labels);
+        return this.labels.equals(that.labels);
     }
 
     @Override
     public final int hashCode()
     {
-        return Objects.hash(labels);
+        return Objects.hash(this.labels);
     }
 
     @Override
     public final String toString()
     {
-        return String.format("VoxChatCommand[labels=%s]", labels);
+        return String.format("VoxChatCommand[labels=%s]", this.labels);
     }
 
 }

@@ -69,7 +69,7 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
     {
         if (args.length == 0)
         {
-            final VoxChatCommand help = lookup.get("help");
+            final VoxChatCommand help = this.lookup.get("help");
             if (help != null)
             {
                 help.evaluate(sender, "", Collections.emptyList());
@@ -80,7 +80,7 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
 
 
         final String         search = args[0].toLowerCase();
-        final VoxChatCommand target = lookup.get(search);
+        final VoxChatCommand target = this.lookup.get(search);
 
         if (target == null)
         {
@@ -106,7 +106,7 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
         }
         catch (final Throwable ex)
         {
-            plugin.getLogger().log(Level.SEVERE, "failed to evaluate command:" + target.getLabel(), ex);
+            this.plugin.getLogger().log(Level.SEVERE, "failed to evaluate command:" + target.getLabel(), ex);
         }
 
         return true;
@@ -119,7 +119,7 @@ public final class VoxChatCommandRouter implements CommandExecutor, TabCompleter
 
         if (args.length > 1)
         {
-            final VoxChatCommand target = lookup.get(args[0].toLowerCase());
+            final VoxChatCommand target = this.lookup.get(args[0].toLowerCase());
             if (target != null)
             {
                 target.complete(sender, alias, ImmutableList.copyOf(Arrays.copyOfRange(args, 1, args.length)), suggestions);

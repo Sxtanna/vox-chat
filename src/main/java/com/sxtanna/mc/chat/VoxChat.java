@@ -84,7 +84,7 @@ public final class VoxChat
 
     public @NotNull VoxChatPlugin getPlugin()
     {
-        return plugin;
+        return this.plugin;
     }
 
 }

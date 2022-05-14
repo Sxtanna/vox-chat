@@ -27,7 +27,7 @@ public abstract class ActionData
     @Contract(pure = true)
     public final @NotNull String getText()
     {
-        return text;
+        return this.text;
     }
 
 
@@ -55,19 +55,19 @@ public abstract class ActionData
         }
 
         final ActionData that = (ActionData) o;
-        return getText().equals(that.getText());
+        return this.text.equals(that.text);
     }
 
     @Override
     public final int hashCode()
     {
-        return Objects.hash(getText());
+        return Objects.hash(this.text);
     }
 
     @Override
     public final String toString()
     {
-        return String.format("%s['%s']", getClass().getSimpleName(), text);
+        return String.format("%s['%s']", getClass().getSimpleName(), this.text);
     }
 
 

@@ -48,7 +48,7 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 
     public @NotNull ComponentBuilder getBuilder()
     {
-        return clean(builder);
+        return clean(this.builder);
     }
 
     @Override
@@ -67,34 +67,34 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
     @Override
     public void visit(final Emphasis emphasis)
     {
-        ital = true;
+        this.ital = true;
         visitChildren(emphasis);
-        ital = false;
+        this.ital = false;
     }
 
     @Override
     public void visit(final StrongEmphasis strongEmphasis)
     {
-        bold = true;
+        this.bold = true;
         visitChildren(strongEmphasis);
-        bold = false;
+        this.bold = false;
     }
 
     @Override
     public void visit(final Text text)
     {
-        builder.append(ofText(VoxChat.getReplacer().apply(this.player, text.getLiteral())),
-                       currentHasText() ?
-                       ComponentBuilder.FormatRetention.NONE :
-                       ComponentBuilder.FormatRetention.FORMATTING);
+        this.builder.append(ofText(VoxChat.getReplacer().apply(this.player, text.getLiteral())),
+                            currentHasText() ?
+                            ComponentBuilder.FormatRetention.NONE :
+                            ComponentBuilder.FormatRetention.FORMATTING);
 
-        if (ital)
+        if (this.ital)
         {
-            builder.italic(true);
+            this.builder.italic(true);
         }
-        if (bold)
+        if (this.bold)
         {
-            builder.bold(true);
+            this.builder.bold(true);
         }
     }
 
@@ -119,9 +119,9 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
                       .flatMap(type -> VoxChat.getActionManager().find(type, path[1]))
                       .ifPresent(data -> {
                           data.getClickEvent()
-                              .ifPresent(builder::event);
+                              .ifPresent(this.builder::event);
                           data.getHoverEvent()
-                              .ifPresent(builder::event);
+                              .ifPresent(this.builder::event);
                       });
         }
     }
@@ -129,20 +129,20 @@ public final class VoxChatRender extends AbstractVisitor implements NodeRenderer
 
     private boolean currentHasText()
     {
-        final BaseComponent current = builder.getCurrentComponent();
+        final BaseComponent current = this.builder.getCurrentComponent();
         return current instanceof TextComponent && !((TextComponent) current).getText().isEmpty();
     }
 
     private void cleanseEmpty()
     {
-        while (!builder.getParts().isEmpty() && !currentHasText())
+        while (!this.builder.getParts().isEmpty() && !currentHasText())
         {
-            if (builder.getCurrentComponent().getExtra() != null && !builder.getCurrentComponent().getExtra().isEmpty())
+            if (this.builder.getCurrentComponent().getExtra() != null && !this.builder.getCurrentComponent().getExtra().isEmpty())
             {
                 break;
             }
 
-            builder.resetCursor().removeComponent(builder.getCursor());
+            this.builder.resetCursor().removeComponent(this.builder.getCursor());
         }
     }
 

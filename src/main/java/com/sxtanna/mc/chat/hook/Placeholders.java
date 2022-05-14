@@ -34,40 +34,40 @@ public final class Placeholders implements State
     {
         final List<String> added = new ArrayList<>();
 
-        if (plugin.getConfig().getBoolean("options.extras.replacers.clip_papi") &&
+        if (this.plugin.getConfig().getBoolean("options.extras.replacers.clip_papi") &&
             Bukkit.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI"))
         {
             try
             {
-                hooked.add(me.clip.placeholderapi.PlaceholderAPI::setPlaceholders);
+                this.hooked.add(me.clip.placeholderapi.PlaceholderAPI::setPlaceholders);
 
                 added.add("PlaceholderAPI");
             }
             catch (final Throwable ex)
             {
-                plugin.getLogger().log(Level.WARNING, "failed to register replacer for PlaceholderAPI", ex);
+                this.plugin.getLogger().log(Level.WARNING, "failed to register replacer for PlaceholderAPI", ex);
             }
         }
 
-        if (plugin.getConfig().getBoolean("options.extras.replacers.mvdw_papi") &&
+        if (this.plugin.getConfig().getBoolean("options.extras.replacers.mvdw_papi") &&
             Bukkit.getServer().getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
         {
             try
             {
                 //noinspection NullableProblems
-                hooked.add(be.maximvdw.placeholderapi.PlaceholderAPI::replacePlaceholders);
+                this.hooked.add(be.maximvdw.placeholderapi.PlaceholderAPI::replacePlaceholders);
 
                 added.add("MVdWPlaceholderAPI");
             }
             catch (final Throwable ex)
             {
-                plugin.getLogger().log(Level.WARNING, "failed to register replacer for MVdWPlaceholderAPI", ex);
+                this.plugin.getLogger().log(Level.WARNING, "failed to register replacer for MVdWPlaceholderAPI", ex);
             }
         }
 
         if (added.isEmpty())
         {
-            hooked.add((player, text) -> {
+            this.hooked.add((player, text) -> {
                 final Player online = player == null ? null : player.getPlayer();
                 if (online == null)
                 {
@@ -88,7 +88,7 @@ public final class Placeholders implements State
             });
         }
 
-        if (plugin.getConfig().getBoolean("options.extras.replacers.items_adder.in_formats"))
+        if (this.plugin.getConfig().getBoolean("options.extras.replacers.items_adder.in_formats"))
         {
             try
             {
@@ -96,38 +96,38 @@ public final class Placeholders implements State
                 if (replacer != null)
                 {
                     // this is proxied to avoid permission checking on the player, since this only replaces values in the format
-                    hooked.add(($, text) -> replacer.replace(null, text));
+                    this.hooked.add(($, text) -> replacer.replace(null, text));
                     added.add("ItemsAdder");
                 }
             }
             catch (final Throwable ex)
             {
-                plugin.getLogger().log(Level.WARNING, "failed to register replacer for ItemsAdder", ex);
+                this.plugin.getLogger().log(Level.WARNING, "failed to register replacer for ItemsAdder", ex);
             }
         }
 
         if (!added.isEmpty())
         {
-            plugin.getLogger().info("Successfully registered replacers for " + added + ".");
+            this.plugin.getLogger().info("Successfully registered replacers for " + added + ".");
         }
     }
 
     @Override
     public void kill()
     {
-        hooked.clear();
+        this.hooked.clear();
     }
 
 
     public @NotNull String apply(@Nullable final OfflinePlayer player, @NotNull final String text)
     {
-        if (hooked.isEmpty())
+        if (this.hooked.isEmpty())
         {
             return text;
         }
 
-        return hooked.stream()
-                     .reduce(text, (next, replacer) -> replacer.replace(player, next), String::concat);
+        return this.hooked.stream()
+                          .reduce(text, (next, replacer) -> replacer.replace(player, next), String::concat);
     }
 
 

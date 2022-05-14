@@ -59,23 +59,23 @@ public final class FormatManager implements State
     @Override
     public void kill()
     {
-        cached.clear();
+        this.cached.clear();
     }
 
 
     public @NotNull @Unmodifiable Set<String> list()
     {
-        return ImmutableSet.copyOf(cached.keySet());
+        return ImmutableSet.copyOf(this.cached.keySet());
     }
 
     public @NotNull Optional<FormatData> find(@NotNull final String name)
     {
-        return Optional.ofNullable(cached.get(name.toLowerCase()));
+        return Optional.ofNullable(this.cached.get(name.toLowerCase()));
     }
 
     public void save(@NotNull final FormatData data)
     {
-        cached.put(data.getName().toLowerCase(), data);
+        this.cached.put(data.getName().toLowerCase(), data);
     }
 
 
@@ -87,7 +87,7 @@ public final class FormatManager implements State
             return Optional.empty();
         }
 
-        final Optional<Node> node = reader.read(data.get().getFormatText());
+        final Optional<Node> node = this.reader.read(data.get().getFormatText());
         if (!node.isPresent())
         {
             return Optional.empty();
@@ -110,7 +110,7 @@ public final class FormatManager implements State
             final BaseComponent[] messageComponent = of(message);
             if (!data.get().allowsColors())
             {
-                final String bypassPermission = plugin.getConfig().getString("options.bypass.colors_permission");
+                final String bypassPermission = this.plugin.getConfig().getString("options.bypass.colors_permission");
                 if (bypassPermission == null || !player.hasPermission(bypassPermission))
                 {
                     walk(messageComponent, component -> component.setColor(null));
@@ -119,7 +119,7 @@ public final class FormatManager implements State
 
             if (!data.get().allowsFormat() && !player.hasPermission("voxchat.bypass.format"))
             {
-                final String bypassPermission = plugin.getConfig().getString("options.bypass.format_permission");
+                final String bypassPermission = this.plugin.getConfig().getString("options.bypass.format_permission");
                 if (bypassPermission == null || !player.hasPermission(bypassPermission))
                 {
                     walk(messageComponent, component ->
@@ -145,7 +145,7 @@ public final class FormatManager implements State
 
     private void loadFormats()
     {
-        final ConfigurationSection section = plugin.getConfig().getConfigurationSection("formats");
+        final ConfigurationSection section = this.plugin.getConfig().getConfigurationSection("formats");
         if (section == null)
         {
             return;
@@ -185,7 +185,7 @@ public final class FormatManager implements State
             final ClickEvent clickEvent = component.getClickEvent();
             if (clickEvent != null)
             {
-                component.setClickEvent(new ClickEvent(clickEvent.getAction(), plugin.getReplacer().apply(player, clickEvent.getValue())));
+                component.setClickEvent(new ClickEvent(clickEvent.getAction(), this.plugin.getReplacer().apply(player, clickEvent.getValue())));
             }
 
             if (!(component instanceof TextComponent))
@@ -194,7 +194,7 @@ public final class FormatManager implements State
             }
 
             final TextComponent text = (TextComponent) component;
-            text.setText(plugin.getReplacer().apply(player, text.getText()));
+            text.setText(this.plugin.getReplacer().apply(player, text.getText()));
         });
     }
 
@@ -212,7 +212,7 @@ public final class FormatManager implements State
             {
                 final String textValue = (String) value;
 
-                return new Text(plugin.getReplacer().apply(player, textValue));
+                return new Text(this.plugin.getReplacer().apply(player, textValue));
             }
             else if (value instanceof BaseComponent[])
             {

@@ -46,19 +46,19 @@ public final class VoxChatEvent extends Event implements Cancellable
     @Contract(pure = true)
     public @NotNull Player getPlayer()
     {
-        return player;
+        return this.player;
     }
 
     @Contract(pure = true)
     public @NotNull String getFormat()
     {
-        return format;
+        return this.format;
     }
 
     @Contract(pure = true)
     public @NotNull String getMessage()
     {
-        return message;
+        return this.message;
     }
 
     @Contract(mutates = "this")
@@ -104,22 +104,22 @@ public final class VoxChatEvent extends Event implements Cancellable
         }
 
         final VoxChatEvent that = (VoxChatEvent) o;
-        return isCancelled() == that.isCancelled() &&
-               getPlayer().equals(that.getPlayer()) &&
-               getFormat().equals(that.getFormat()) &&
-               getMessage().equals(that.getMessage());
+        return this.cancelled == that.cancelled &&
+               this.player.equals(that.player) &&
+               this.format.equals(that.format) &&
+               this.message.equals(that.message);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getPlayer(), getFormat(), getMessage(), isCancelled());
+        return Objects.hash(this.player, this.format, this.message, this.cancelled);
     }
 
     @Override
     public String toString()
     {
-        return String.format("VoxChatEvent[player=%s, format='%s', message='%s', cancelled=%s, handlers=%s]", player, format, message, cancelled, getHandlers());
+        return String.format("VoxChatEvent[player=%s, format='%s', message='%s', cancelled=%s, handlers=%s]", this.player, this.format, this.message, this.cancelled, getHandlers());
     }
 
 

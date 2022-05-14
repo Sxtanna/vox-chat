@@ -37,9 +37,9 @@ public final class ChatListener implements State, Listener
     @Override
     public void load()
     {
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
 
-        loaded = true;
+        this.loaded = true;
     }
 
     @Override
@@ -47,14 +47,14 @@ public final class ChatListener implements State, Listener
     {
         HandlerList.unregisterAll(this);
 
-        loaded = false;
+        this.loaded = false;
     }
 
 
     @Contract(pure = true)
     public boolean isLoaded()
     {
-        return loaded;
+        return this.loaded;
     }
 
 
@@ -72,7 +72,7 @@ public final class ChatListener implements State, Listener
 
 
         final VoxChatEvent voxChatEvent = new VoxChatEvent(event.isAsynchronous(), player, formatName.get(), message);
-        plugin.getServer().getPluginManager().callEvent(voxChatEvent);
+        this.plugin.getServer().getPluginManager().callEvent(voxChatEvent);
 
         if (voxChatEvent.isCancelled())
         {
@@ -85,7 +85,7 @@ public final class ChatListener implements State, Listener
             return;
         }
 
-        if (plugin.getConfig().getBoolean("options.cancel_chat_event", false))
+        if (this.plugin.getConfig().getBoolean("options.cancel_chat_event", false))
         {
             event.setCancelled(true);
         }

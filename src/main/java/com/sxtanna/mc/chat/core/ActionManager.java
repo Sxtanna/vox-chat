@@ -37,25 +37,25 @@ public final class ActionManager implements State
     @Override
     public void kill()
     {
-        cached.clear();
+        this.cached.clear();
     }
 
 
     public @NotNull Optional<ActionData> find(@NotNull final ActionType type, @NotNull final String name)
     {
-        return Optional.ofNullable(cached.get(type)).map(map -> map.get(name.toLowerCase()));
+        return Optional.ofNullable(this.cached.get(type)).map(map -> map.get(name.toLowerCase()));
     }
 
 
     public void save(@NotNull final ActionType type, @NotNull final String name, @NotNull final ActionData action)
     {
-        cached.computeIfAbsent(type, ($) -> new HashMap<>()).put(name.toLowerCase(), action);
+        this.cached.computeIfAbsent(type, ($) -> new HashMap<>()).put(name.toLowerCase(), action);
     }
 
 
     private void loadActions()
     {
-        final ConfigurationSection section = plugin.getConfig().getConfigurationSection("actions");
+        final ConfigurationSection section = this.plugin.getConfig().getConfigurationSection("actions");
         if (section == null)
         {
             return;

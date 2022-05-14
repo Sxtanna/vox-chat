@@ -22,7 +22,7 @@ public final class VoxChatReader
     {
         try
         {
-            return Optional.ofNullable(parser.parse(text));
+            return Optional.ofNullable(this.parser.parse(text));
         }
         catch (final Exception ex)
         {
