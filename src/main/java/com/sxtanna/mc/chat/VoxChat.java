@@ -51,7 +51,7 @@ public final class VoxChat
             return false;
         }
 
-        recipients.forEach(other -> other.spigot().sendMessage(components.get()));
+        recipients.forEach(other -> other.spigot().sendMessage(player.getUniqueId(), components.get()));
         return true;
     }
 
