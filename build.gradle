@@ -44,6 +44,9 @@ dependencies {
 	compileOnly("com.github.LoneDev6:API-ItemsAdder:2.5.5") {
 		transitive = false
 	}
+	
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
 }
 
 
