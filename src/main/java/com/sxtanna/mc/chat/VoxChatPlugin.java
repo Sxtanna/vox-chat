@@ -42,17 +42,20 @@ public final class VoxChatPlugin extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
-		try
+		if (getConfig().getBoolean("options.show_banner_on_start", true))
 		{
-			final Reader banner = getTextResource("banner");
-			if (banner != null)
+			try
 			{
-				//noinspection UnstableApiUsage
-				getLogger().info("\n" + CharStreams.toString(banner));
+				final Reader banner = getTextResource("banner");
+				if (banner != null)
+				{
+					//noinspection UnstableApiUsage
+					getLogger().info("\n" + CharStreams.toString(banner));
+				}
 			}
+			catch (final IOException ignored)
+			{ }
 		}
-		catch (final IOException ignored)
-		{ }
 
 
 		actionManager.load();
