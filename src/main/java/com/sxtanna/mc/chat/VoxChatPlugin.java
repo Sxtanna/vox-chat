@@ -14,10 +14,14 @@ import com.sxtanna.mc.chat.core.events.ChatListener;
 import com.sxtanna.mc.chat.hook.Placeholders;
 
 import com.google.common.io.CharStreams;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
+import org.bstats.charts.SingleLineChart;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Optional;
+import java.util.logging.Level;
 
 public final class VoxChatPlugin extends JavaPlugin
 {
@@ -79,6 +83,19 @@ public final class VoxChatPlugin extends JavaPlugin
             command.setExecutor(router);
             command.setTabCompleter(router);
         }
+
+        if (getConfig().getBoolean("options.use_metrics", true))
+        {
+            try
+            {
+                initializeMetrics();
+            }
+            catch (final Throwable ex)
+            {
+                getLogger().log(Level.WARNING, "failed to initialize metrics", ex);
+            }
+        }
+
     }
 
     @Override
@@ -149,6 +166,15 @@ public final class VoxChatPlugin extends JavaPlugin
         }
 
         return Optional.empty();
+    }
+
+
+    private void initializeMetrics()
+    {
+        final Metrics metrics = new Metrics(this, 15190);
+
+        metrics.addCustomChart(new SingleLineChart("sent_messages", () -> getListener().getSentMessages()));
+        metrics.addCustomChart(new SimplePie("format_count", () -> String.valueOf(getFormatManager().size())));
     }
 
 }

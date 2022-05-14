@@ -3,6 +3,8 @@
 #
 
 options:
+  # Whether the plugin will collect metrics using bstats.
+  use_metrics: true
   # Whether the plugin will print the voxchat banner on startup.
   show_banner_on_start: true
   # Whether the chat listener will actually cancel the AsyncPlayerChatEvent, or just clear its recipients.

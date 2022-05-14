@@ -63,6 +63,11 @@ public final class FormatManager implements State
     }
 
 
+    public int size()
+    {
+        return this.cached.size();
+    }
+
     public @NotNull @Unmodifiable Set<String> list()
     {
         return ImmutableSet.copyOf(this.cached.keySet());

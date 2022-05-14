@@ -19,6 +19,7 @@ import com.google.common.collect.Sets;
 
 import java.util.Collections;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ChatListener implements State, Listener
 {
@@ -26,7 +27,8 @@ public final class ChatListener implements State, Listener
     @NotNull
     private final VoxChatPlugin plugin;
 
-    private boolean loaded;
+    private       boolean       loaded;
+    private final AtomicInteger sent = new AtomicInteger();
 
     public ChatListener(@NotNull final VoxChatPlugin plugin)
     {
@@ -57,6 +59,11 @@ public final class ChatListener implements State, Listener
         return this.loaded;
     }
 
+    public int getSentMessages()
+    {
+        return this.sent.get();
+    }
+
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onChat(@NotNull final AsyncPlayerChatEvent event)
@@ -84,6 +91,8 @@ public final class ChatListener implements State, Listener
         {
             return;
         }
+
+        this.sent.incrementAndGet();
 
         if (this.plugin.getConfig().getBoolean("options.cancel_chat_event", false))
         {
