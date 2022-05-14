@@ -9,9 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,18 +27,36 @@ public final class Comp
 	{}
 
 
+	public static @NotNull String preprocessHexColors(@NotNull final String text)
+	{
+		final List<MatchResult> results = new ArrayList<>();
+		final Matcher           matcher = HEX_COLOR.matcher(text);
+		final StringBuilder     builder = new StringBuilder(text);
+
+		while (matcher.find())
+		{
+			results.add(matcher.toMatchResult());
+		}
+
+		Collections.reverse(results);
+
+		for (final MatchResult result : results)
+		{
+			builder.replace(result.start(), result.end(), transformHexColor(result.group(1)));
+		}
+
+		return builder.toString();
+	}
+
+	public static @NotNull String transformHexColor(@NotNull final String hex) {
+		//noinspection SuspiciousRegexArgument
+		return String.format("%sx%s", ChatColor.COLOR_CHAR, hex.replaceAll(".", String.format("%s$0", ChatColor.COLOR_CHAR)));
+	}
+
 	@NotNull
 	public static BaseComponent[] of(@NotNull final String text)
 	{
-		final Matcher       matcher = HEX_COLOR.matcher(text);
-		final StringBuilder builder = new StringBuilder(text);
-		while (matcher.find())
-		{
-			//noinspection SuspiciousRegexArgument
-			builder.replace(matcher.start(), matcher.end(), "§x" + matcher.group("hex").replaceAll(".", "§$0"));
-		}
-
-		return TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', builder.toString()));
+		return TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', preprocessHexColors(text)));
 	}
 
 	@NotNull
