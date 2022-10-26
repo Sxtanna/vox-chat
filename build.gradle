@@ -42,7 +42,7 @@ dependencies {
 		transitive = false
 	}
 	
-	compileOnly("com.github.LoneDev6:API-ItemsAdder:2.5.5") {
+	compileOnly("com.github.LoneDev6:API-ItemsAdder:3.2.5") {
 		transitive = false
 	}
 	
