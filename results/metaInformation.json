@@ -1,0 +1,18 @@
+{
+  "total": 0,
+  "tools inspection": {
+    "Code Inspection": 0
+  },
+  "attributes": {
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "https://github.com/Sxtanna/vox-chat",
+        "revisionId": "ae0d0281fad10bde1e59c1a87e1366d8badaf0df",
+        "branch": "master"
+      }
+    },
+    "deviceId": "200820300000000-99f1-4f46-6917-c75deea4aeaf",
+    "jobUrl": "https://github.com/Sxtanna/vox-chat/actions/runs/3430458434",
+    "repoUrl": "https://github.com/Sxtanna/vox-chat"
+  }
+}

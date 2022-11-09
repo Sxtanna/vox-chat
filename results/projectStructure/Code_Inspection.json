@@ -1,0 +1,210 @@
+{
+  "modules": [
+    {
+      "name": "vox-chat",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "jbr-11",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        }
+      ]
+    },
+    {
+      "name": "vox-chat.test",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/src/test",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/src/test/java",
+              "type": "TestSource",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "jbr-11",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "vox-chat.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:23.0.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.spigotmc:spigot-api:1.16.4-R0.1-SNAPSHOT",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: me.clip:placeholderapi:2.11.1",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: be.maximvdw:MVdWPlaceholderAPI:3.1.1-SNAPSHOT",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.github.LoneDev6:API-ItemsAdder:2.5.5",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.bstats:bstats-bukkit:3.0.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.8.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: commons-lang:commons-lang:2.6",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: net.md-5:bungeecord-chat:1.16-R0.3",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.google.guava:guava:21.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.google.code.gson:gson:2.8.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.yaml:snakeyaml:1.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.bstats:bstats-base:3.0.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.commonmark:commonmark:0.17.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.8.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.8.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.8.2",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "vox-chat.main",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/src/main",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/src/main/java",
+              "type": "Source",
+              "packagePrefix": ""
+            },
+            {
+              "path": "file://$PROJECT_DIR$/src/main/resources",
+              "type": "Resource",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "jbr-11",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:23.0.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.spigotmc:spigot-api:1.16.4-R0.1-SNAPSHOT",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: me.clip:placeholderapi:2.11.1",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: be.maximvdw:MVdWPlaceholderAPI:3.1.1-SNAPSHOT",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.github.LoneDev6:API-ItemsAdder:2.5.5",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.bstats:bstats-bukkit:3.0.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: commons-lang:commons-lang:2.6",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: net.md-5:bungeecord-chat:1.16-R0.3",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.google.guava:guava:21.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.google.code.gson:gson:2.8.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.yaml:snakeyaml:1.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.bstats:bstats-base:3.0.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.commonmark:commonmark:0.17.0",
+          "type": "Library"
+        }
+      ]
+    }
+  ]
+}

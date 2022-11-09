@@ -1,0 +1,16 @@
+{
+  "modules": [
+    {
+      "name": "vox-chat",
+      "languageLevel": 8
+    },
+    {
+      "name": "vox-chat.test",
+      "languageLevel": 8
+    },
+    {
+      "name": "vox-chat.main",
+      "languageLevel": 8
+    }
+  ]
+}

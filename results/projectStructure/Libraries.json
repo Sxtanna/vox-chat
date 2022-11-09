@@ -1,0 +1,118 @@
+{
+  "libraries": [
+    {
+      "name": "Gradle: org.jetbrains:annotations:23.0.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.spigotmc:spigot-api:1.16.4-R0.1-SNAPSHOT",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.spigotmc/spigot-api/1.16.4-R0.1-SNAPSHOT/c6cfccfa2f6586e72ec427da87ac2fd241fa34e9/spigot-api-1.16.4-R0.1-SNAPSHOT.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: me.clip:placeholderapi:2.11.1",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/me.clip/placeholderapi/2.11.1/2f51500cbeb97cb4d72842a6194d71dbfcc2640a/placeholderapi-2.11.1.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: be.maximvdw:MVdWPlaceholderAPI:3.1.1-SNAPSHOT",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/be.maximvdw/MVdWPlaceholderAPI/3.1.1-SNAPSHOT/bbcb535d45705d444c50c871d53041771064bfb4/MVdWPlaceholderAPI-3.1.1-SNAPSHOT.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: com.github.LoneDev6:API-ItemsAdder:2.5.5",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.github.LoneDev6/API-ItemsAdder/2.5.5/209f2f4afaa2a3425cefb68e29f4e0516eed765b/API-ItemsAdder-2.5.5.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.bstats:bstats-bukkit:3.0.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.bstats/bstats-bukkit/3.0.0/2270b85b7b734a20b2245049ec625b723af9cacc/bstats-bukkit-3.0.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: commons-lang:commons-lang:2.6",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: net.md-5:bungeecord-chat:1.16-R0.3",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-chat/1.16-R0.3/cf9572b866830d6dfc3ccc6b6e3cde82013cf9e0/bungeecord-chat-1.16-R0.3.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: com.google.guava:guava:21.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.google.guava/guava/21.0/3a3d111be1be1b745edfa7d91678a12d7ed38709/guava-21.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: com.google.code.gson:gson:2.8.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.yaml:snakeyaml:1.26",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.26/a78a8747147d2c5807683e76ec2b633e95c14fe9/snakeyaml-1.26.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.bstats:bstats-base:3.0.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.bstats/bstats-base/3.0.0/a1a37a35ba4be9bcd28086c11b5de96d06b05466/bstats-base-3.0.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.commonmark:commonmark:0.17.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.commonmark/commonmark/0.17.0/a344223d4c3b5113fa9cbbd3afa2738c138f03b/commonmark-0.17.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.8.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.2/4c21029217adf07e4c0d0c5e192b6bf610c94bdc/junit-jupiter-api-5.8.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.junit.platform:junit-platform-commons:1.8.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.2/32c8b8617c1342376fd5af2053da6410d8866861/junit-platform-commons-1.8.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.2/a231e0d844d2721b0fa1b238006d15c6ded6842a/apiguardian-api-1.1.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.8.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.2/c598b4328d2f397194d11df3b1648d68d7d990e3/junit-jupiter-engine-5.8.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.junit.platform:junit-platform-engine:1.8.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.2/b737de09f19864bd136805c84df7999a142fec29/junit-platform-engine-1.8.2.jar!/"
+      ]
+    }
+  ]
+}
