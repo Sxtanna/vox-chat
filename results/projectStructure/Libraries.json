@@ -13,9 +13,9 @@
       ]
     },
     {
-      "name": "Gradle: me.clip:placeholderapi:2.11.2",
+      "name": "Gradle: me.clip:placeholderapi:2.11.1",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/me.clip/placeholderapi/2.11.2/f262bff4726c685d4a959cac5d958e5f300a5aa2/placeholderapi-2.11.2.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/me.clip/placeholderapi/2.11.1/2f51500cbeb97cb4d72842a6194d71dbfcc2640a/placeholderapi-2.11.1.jar!/"
       ]
     },
     {

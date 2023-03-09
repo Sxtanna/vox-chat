@@ -18,12 +18,12 @@
       "version": "1.16.4-R0.1-SNAPSHOT"
     },
     {
-      "ideaName": "Gradle: me.clip:placeholderapi:2.11.2",
-      "gradleName": "me.clip:placeholderapi:2.11.2",
+      "ideaName": "Gradle: me.clip:placeholderapi:2.11.1",
+      "gradleName": "me.clip:placeholderapi:2.11.1",
       "unresolved": false,
       "groupId": "me.clip",
       "artifactId": "placeholderapi",
-      "version": "2.11.2"
+      "version": "2.11.1"
     },
     {
       "ideaName": "Gradle: be.maximvdw:MVdWPlaceholderAPI:3.1.1-SNAPSHOT",

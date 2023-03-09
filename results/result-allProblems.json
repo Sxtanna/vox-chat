@@ -10,34 +10,6 @@
       "type": "file",
       "path": "src/main/java/com/sxtanna/mc/chat/core/events/VoxChatEvent.java",
       "language": "JAVA",
-      "line": 64,
-      "offset": 15,
-      "length": 7,
-      "code": {
-        "startLine": 62,
-        "length": 7,
-        "offset": 21,
-        "surroundingCode": "    }\n\n    @Contract(mutates = \"this\")\n    public void setMessage(@NotNull final String message)\n    {"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "vox-chat.main",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "e8a3b3a431328145f4e247606f8f90ab6bcf5ff8ab797aa96738201d1538a66a"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'mutates' is marked unstable with @ApiStatus.Experimental",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "src/main/java/com/sxtanna/mc/chat/core/events/VoxChatEvent.java",
-      "language": "JAVA",
       "line": 79,
       "offset": 15,
       "length": 7,
@@ -54,4 +26,32 @@
     "inspectionName": "UnstableApiUsage"
   },
   "hash": "399edc4d8d3ba0da5ee70b256d49529cfdad4c7b8d5f10eb08d0ea9a6a714661"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'mutates' is marked unstable with @ApiStatus.Experimental",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/main/java/com/sxtanna/mc/chat/core/events/VoxChatEvent.java",
+      "language": "JAVA",
+      "line": 64,
+      "offset": 15,
+      "length": 7,
+      "code": {
+        "startLine": 62,
+        "length": 7,
+        "offset": 21,
+        "surroundingCode": "    }\n\n    @Contract(mutates = \"this\")\n    public void setMessage(@NotNull final String message)\n    {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "vox-chat.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "e8a3b3a431328145f4e247606f8f90ab6bcf5ff8ab797aa96738201d1538a66a"
 }]}
