@@ -7,12 +7,12 @@
     "vcs": {
       "sarifIdea": {
         "repositoryUri": "https://github.com/Sxtanna/vox-chat",
-        "revisionId": "30fa301c916fe092a8c9e571c70b7dc3b6352c9d",
+        "revisionId": "d31e73c3ed72871ddae4a602c7424df6823d47d8",
         "branch": "master"
       }
     },
     "deviceId": "200820300000000-99f1-4f46-6917-c75deea4aeaf",
-    "jobUrl": "https://github.com/Sxtanna/vox-chat/actions/runs/4371096360",
+    "jobUrl": "https://github.com/Sxtanna/vox-chat/actions/runs/4371102359",
     "repoUrl": "https://github.com/Sxtanna/vox-chat"
   }
 }
