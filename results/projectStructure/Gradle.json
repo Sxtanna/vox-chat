@@ -2,12 +2,12 @@
   "gradleJvm": "#JAVA_HOME",
   "libraries": [
     {
-      "ideaName": "Gradle: org.jetbrains:annotations:23.0.0",
-      "gradleName": "org.jetbrains:annotations:23.0.0",
+      "ideaName": "Gradle: org.jetbrains:annotations:24.0.1",
+      "gradleName": "org.jetbrains:annotations:24.0.1",
       "unresolved": false,
       "groupId": "org.jetbrains",
       "artifactId": "annotations",
-      "version": "23.0.0"
+      "version": "24.0.1"
     },
     {
       "ideaName": "Gradle: org.spigotmc:spigot-api:1.16.4-R0.1-SNAPSHOT",

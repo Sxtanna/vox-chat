@@ -47,7 +47,7 @@
           "type": "Module"
         },
         {
-          "name": "Gradle: org.jetbrains:annotations:23.0.0",
+          "name": "Gradle: org.jetbrains:annotations:24.0.1",
           "type": "Library"
         },
         {
@@ -153,7 +153,7 @@
           "type": "Own sources"
         },
         {
-          "name": "Gradle: org.jetbrains:annotations:23.0.0",
+          "name": "Gradle: org.jetbrains:annotations:24.0.1",
           "type": "Library"
         },
         {

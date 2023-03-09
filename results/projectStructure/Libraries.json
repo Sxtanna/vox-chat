@@ -1,9 +1,9 @@
 {
   "libraries": [
     {
-      "name": "Gradle: org.jetbrains:annotations:23.0.0",
+      "name": "Gradle: org.jetbrains:annotations:24.0.1",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/24.0.1/13c5c75c4206580aa4d683bffee658caae6c9f43/annotations-24.0.1.jar!/"
       ]
     },
     {
