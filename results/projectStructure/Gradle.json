@@ -18,12 +18,12 @@
       "version": "1.16.4-R0.1-SNAPSHOT"
     },
     {
-      "ideaName": "Gradle: me.clip:placeholderapi:2.11.1",
-      "gradleName": "me.clip:placeholderapi:2.11.1",
+      "ideaName": "Gradle: me.clip:placeholderapi:2.11.2",
+      "gradleName": "me.clip:placeholderapi:2.11.2",
       "unresolved": false,
       "groupId": "me.clip",
       "artifactId": "placeholderapi",
-      "version": "2.11.1"
+      "version": "2.11.2"
     },
     {
       "ideaName": "Gradle: be.maximvdw:MVdWPlaceholderAPI:3.1.1-SNAPSHOT",
@@ -138,20 +138,36 @@
       "version": "1.1.2"
     },
     {
-      "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.8.2",
-      "gradleName": "org.junit.jupiter:junit-jupiter-engine:5.8.2",
+      "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+      "gradleName": "org.junit.jupiter:junit-jupiter-engine:5.9.2",
       "unresolved": false,
       "groupId": "org.junit.jupiter",
       "artifactId": "junit-jupiter-engine",
-      "version": "5.8.2"
+      "version": "5.9.2"
     },
     {
-      "ideaName": "Gradle: org.junit.platform:junit-platform-engine:1.8.2",
-      "gradleName": "org.junit.platform:junit-platform-engine:1.8.2",
+      "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+      "gradleName": "org.junit.jupiter:junit-jupiter-api:5.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.jupiter",
+      "artifactId": "junit-jupiter-api",
+      "version": "5.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+      "gradleName": "org.junit.platform:junit-platform-engine:1.9.2",
       "unresolved": false,
       "groupId": "org.junit.platform",
       "artifactId": "junit-platform-engine",
-      "version": "1.8.2"
+      "version": "1.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+      "gradleName": "org.junit.platform:junit-platform-commons:1.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.platform",
+      "artifactId": "junit-platform-commons",
+      "version": "1.9.2"
     }
   ]
 }
