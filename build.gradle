@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-	implementation "org.bstats:bstats-bukkit:3.0.0"
+	implementation "org.bstats:bstats-bukkit:3.0.2"
 	implementation "com.atlassian.commonmark:commonmark:0.17.0"
 	
 	compileOnly "org.jetbrains:annotations:24.0.1"
